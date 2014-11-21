@@ -9,16 +9,16 @@ namespace TomorrowSoft.DAL
     {
         public bool Add(string sendtime, string qs)
         {
-            StringBuilder strSql = new StringBuilder();
+            var strSql = new StringBuilder();
             strSql.Append("insert into QsWarning(");
             strSql.Append("SendTime,QsDown)");
             strSql.Append(" values (");
             strSql.Append("@SendTime,@QsDown)");
-            SQLiteParameter[] parameters = {
-				
-					new SQLiteParameter("@SendTime", DbType.String),
-					new SQLiteParameter("@QsDown", DbType.String)
-				};
+            SQLiteParameter[] parameters =
+                {
+                    new SQLiteParameter("@SendTime", DbType.String),
+                    new SQLiteParameter("@QsDown", DbType.String)
+                };
 
             parameters[0].Value = sendtime;
             parameters[1].Value = qs;
@@ -29,7 +29,7 @@ namespace TomorrowSoft.DAL
 
         public DataTable GetAll()
         {
-            StringBuilder strSql = new StringBuilder();
+            var strSql = new StringBuilder();
             strSql.Append("select SendTime,QsDown");
             strSql.Append(" FROM QsWarning");
             return DbHelperSQLite.Query(strSql.ToString()).Tables[0];

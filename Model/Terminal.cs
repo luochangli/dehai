@@ -1,38 +1,41 @@
-﻿using System;
-
-namespace TomorrowSoft.Model
+﻿namespace TomorrowSoft.Model
 {
     /// <summary>
-    /// 终端
+    ///     终端
     /// </summary>
     public class Terminal
     {
         /// <summary>
-        /// 
         /// </summary>
         public virtual int Id { get; set; }
+
         /// <summary>
-        /// 终端地址
+        ///     终端地址
         /// </summary>
         public virtual string Address { get; set; }
+
         /// <summary>
-        /// 电话号码
+        ///     电话号码
         /// </summary>
         public virtual string PhoneNo { get; set; }
+
         /// <summary>
-        /// 所属组号
+        ///     所属组号
         /// </summary>
-        public virtual string Grouping { get; set; } 
+        public virtual string Grouping { get; set; }
+
         /// <summary>
-        /// 二级绑定号码
+        ///     二级绑定号码
         /// </summary>
         public virtual string GroupPhone { get; set; }
+
         /// <summary>
-        /// 一级绑定号码
+        ///     一级绑定号码
         /// </summary>
         public virtual string AllPhone { get; set; }
+
         /// <summary>
-        /// 终端名称
+        ///     终端名称
         /// </summary>
         public virtual string Name { get; set; }
     }

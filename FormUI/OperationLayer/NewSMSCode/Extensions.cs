@@ -24,14 +24,14 @@ using System;
 namespace FormUI.OperationLayer.NewSMSCode
 {
     /// <summary>
-    /// 扩展方法：
-    /// 1、Int32类型的Bit位测试和Bit位设置
-    /// 2、Array类型的子数组检索
+    ///     扩展方法：
+    ///     1、Int32类型的Bit位测试和Bit位设置
+    ///     2、Array类型的子数组检索
     /// </summary>
     public static class Extensions
     {
         /// <summary>
-        /// Bit位测试
+        ///     Bit位测试
         /// </summary>
         /// <param name="n">要测试的整数</param>
         /// <param name="bit">要测试的Bit位序号</param>
@@ -52,7 +52,7 @@ namespace FormUI.OperationLayer.NewSMSCode
         }
 
         /// <summary>
-        /// Bit位设置
+        ///     Bit位设置
         /// </summary>
         /// <param name="n">要设置的整数</param>
         /// <param name="bit">要设置的Bit位序号</param>
@@ -62,7 +62,7 @@ namespace FormUI.OperationLayer.NewSMSCode
         }
 
         /// <summary>
-        /// 从此实例检索子数组
+        ///     从此实例检索子数组
         /// </summary>
         /// <param name="source">要检索的数组</param>
         /// <param name="startIndex">起始索引号</param>

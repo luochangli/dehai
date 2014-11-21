@@ -1,24 +1,27 @@
-﻿
-using System;
-using FormUI.OperationLayer;
+﻿using System;
 
 namespace FormUI.Filters
 {
     public class HangUpFilter : Filter
     {
         private const string name = "确定";
-        public override string Phone { get; protected set; }
-
-        public override DateTime Time {
-            get { return DateTime.Now.ToLocalTime(); }
-        }
-        public override string Context { get; set; }
-        public override string Name {
-            get { return "挂机"; }
-        }
 
         public HangUpFilter(Filter next) : base(next)
         {
+        }
+
+        public override string Phone { get; protected set; }
+
+        public override DateTime Time
+        {
+            get { return DateTime.Now.ToLocalTime(); }
+        }
+
+        public override string Context { get; set; }
+
+        public override string Name
+        {
+            get { return "挂机"; }
         }
 
         public override Filter Run()

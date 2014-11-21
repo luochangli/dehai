@@ -1,8 +1,8 @@
 ﻿using System;
+using System.Data;
 using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
 using System.IO.Ports;
+using System.Windows.Forms;
 using BLL;
 using FormUI.OperationLayer;
 using FormUI.Properties;
@@ -11,9 +11,9 @@ namespace FormUI.ManagerForms
 {
     public partial class PortForm : Form
     {
-        private static SerialPortUtil comPort = SerialPortUtil.GetInstance();
+        private static readonly SerialPortUtil comPort = SerialPortUtil.GetInstance();
         private static readonly Port _port = Port.Instance;
-        private AT cmd = new AT();
+        private readonly AT cmd = new AT();
 
         public PortForm()
         {
@@ -25,14 +25,13 @@ namespace FormUI.ManagerForms
             LoadOptions();
             if (TerminalMonitor.CallLock)
                 cmd.SmsAnswer();
-         
+
             ChangeState(_port.IsOpen);
         }
 
         private void ChangeState(bool isOpen)
         {
-        
-            if (isOpen && _port.Received )
+            if (isOpen && _port.Received)
             {
                 btnOpenClose.Text = "关闭串口";
                 lbConnectTip.Text = comPort.PortName + "已连接";
@@ -62,23 +61,19 @@ namespace FormUI.ManagerForms
 
             if (cbPortName.Text == string.Empty)
             {
-               
-                    if (Settings.Default.PortName == string.Empty)
+                if (Settings.Default.PortName == string.Empty)
+                {
+                    try
                     {
-                        try
-                        {
-                            cbPortName.SelectedIndex = 0;
-                        }
-                        catch
-                        {
-                            
-                        }
+                        cbPortName.SelectedIndex = 0;
                     }
-                        
-                    else
-                        cbPortName.Text = Settings.Default.PortName;
-              
-                
+                    catch
+                    {
+                    }
+                }
+
+                else
+                    cbPortName.Text = Settings.Default.PortName;
             }
 
             if (cbBaudRate.Text == string.Empty)
@@ -131,7 +126,6 @@ namespace FormUI.ManagerForms
             {
                 MessageBox.Show(ex.Message, Resources.TipsTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         private void ClosePort()
@@ -158,11 +152,11 @@ namespace FormUI.ManagerForms
                 MessageBox.Show("串口打开失败");
             }
             DeleteReadMsg();
-
         }
+
         private void DeleteReadMsg()
         {
-            var mesIndex = new MessageIndexService().GetAll();
+            DataTable mesIndex = new MessageIndexService().GetAll();
             if (mesIndex.Rows.Count <= 0) return;
             for (int i = 0; i < mesIndex.Rows.Count; i++)
             {
@@ -171,7 +165,5 @@ namespace FormUI.ManagerForms
 //            MessageBox.Show(string.Format("后台接收{0}条短信", mesIndex.Rows.Count));
             new MessageIndexService().Delete();
         }
-     
-
     }
 }

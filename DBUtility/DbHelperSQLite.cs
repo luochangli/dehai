@@ -1,29 +1,25 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.SQLite;
 
 namespace TomorrowSoft.DBUtility
 {
     /// <summary>
-    /// Copyright (C) 2011 Maticsoft 
-    /// 数据访问基础类(基于SQLite)
-    /// 可以用户可以修改满足自己项目的需要。
+    ///     Copyright (C) 2011 Maticsoft
+    ///     数据访问基础类(基于SQLite)
+    ///     可以用户可以修改满足自己项目的需要。
     /// </summary>
     public abstract class DbHelperSQLite
     {
         //数据库连接字符串(app.config来配置)，可以动态更改connectionString支持多数据库.		
-       //public static string connectionString = PubConstant.ConnectionString;
-        public static string connectionString = string.Format(@"Data Source ={0}\SerialPort.db;Version=3", Environment.CurrentDirectory);
-        public DbHelperSQLite()
-        {
-        }
-
+        //public static string connectionString = PubConstant.ConnectionString;
+        public static string connectionString = string.Format(@"Data Source ={0}\SerialPort.db;Version=3",
+                                                              Environment.CurrentDirectory);
 
         #region 公用方法
-       
+
         public static int GetMaxID(string FieldName, string TableName)
         {
             string strsql = "select max(" + FieldName + ")+1 from " + TableName;
@@ -37,6 +33,7 @@ namespace TomorrowSoft.DBUtility
                 return int.Parse(obj.ToString());
             }
         }
+
         public static bool Exists(string strSql)
         {
             object obj = GetSingle(strSql);
@@ -58,6 +55,7 @@ namespace TomorrowSoft.DBUtility
                 return true;
             }
         }
+
         public static bool Exists(string strSql, params SQLiteParameter[] cmdParms)
         {
             object obj = GetSingle(strSql, cmdParms);
@@ -79,21 +77,21 @@ namespace TomorrowSoft.DBUtility
                 return true;
             }
         }
-        
+
         #endregion
 
         #region  执行简单SQL语句
 
         /// <summary>
-        /// 执行SQL语句，返回影响的记录数
+        ///     执行SQL语句，返回影响的记录数
         /// </summary>
         /// <param name="SQLString">SQL语句</param>
         /// <returns>影响的记录数</returns>
         public static int ExecuteSql(string SQLString)
         {
-            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            using (var connection = new SQLiteConnection(connectionString))
             {
-                using (SQLiteCommand cmd = new SQLiteCommand(SQLString, connection))
+                using (var cmd = new SQLiteCommand(SQLString, connection))
                 {
                     try
                     {
@@ -111,15 +109,15 @@ namespace TomorrowSoft.DBUtility
         }
 
         /// <summary>
-        /// 执行多条SQL语句，实现数据库事务。
+        ///     执行多条SQL语句，实现数据库事务。
         /// </summary>
-        /// <param name="SQLStringList">多条SQL语句</param>		
+        /// <param name="SQLStringList">多条SQL语句</param>
         public static void ExecuteSqlTran(ArrayList SQLStringList)
         {
-            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            using (var conn = new SQLiteConnection(connectionString))
             {
                 conn.Open();
-                SQLiteCommand cmd = new SQLiteCommand();
+                var cmd = new SQLiteCommand();
                 cmd.Connection = conn;
                 SQLiteTransaction tx = conn.BeginTransaction();
                 cmd.Transaction = tx;
@@ -143,18 +141,19 @@ namespace TomorrowSoft.DBUtility
                 }
             }
         }
+
         /// <summary>
-        /// 执行带一个存储过程参数的的SQL语句。
+        ///     执行带一个存储过程参数的的SQL语句。
         /// </summary>
         /// <param name="SQLString">SQL语句</param>
         /// <param name="content">参数内容,比如一个字段是格式复杂的文章，有特殊符号，可以通过这个方式添加</param>
         /// <returns>影响的记录数</returns>
         public static int ExecuteSql(string SQLString, string content)
         {
-            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            using (var connection = new SQLiteConnection(connectionString))
             {
-                SQLiteCommand cmd = new SQLiteCommand(SQLString, connection);
-                SQLiteParameter myParameter = new SQLiteParameter("@content", DbType.String);
+                var cmd = new SQLiteCommand(SQLString, connection);
+                var myParameter = new SQLiteParameter("@content", DbType.String);
                 myParameter.Value = content;
                 cmd.Parameters.Add(myParameter);
                 try
@@ -174,18 +173,19 @@ namespace TomorrowSoft.DBUtility
                 }
             }
         }
+
         /// <summary>
-        /// 向数据库里插入图像格式的字段(和上面情况类似的另一种实例)
+        ///     向数据库里插入图像格式的字段(和上面情况类似的另一种实例)
         /// </summary>
         /// <param name="strSQL">SQL语句</param>
         /// <param name="fs">图像字节,数据库的字段类型为image的情况</param>
         /// <returns>影响的记录数</returns>
         public static int ExecuteSqlInsertImg(string strSQL, byte[] fs)
         {
-            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            using (var connection = new SQLiteConnection(connectionString))
             {
-                SQLiteCommand cmd = new SQLiteCommand(strSQL, connection);
-                SQLiteParameter myParameter = new SQLiteParameter("@fs", DbType.Binary);
+                var cmd = new SQLiteCommand(strSQL, connection);
+                var myParameter = new SQLiteParameter("@fs", DbType.Binary);
                 myParameter.Value = fs;
                 cmd.Parameters.Add(myParameter);
                 try
@@ -207,15 +207,15 @@ namespace TomorrowSoft.DBUtility
         }
 
         /// <summary>
-        /// 执行一条计算查询结果语句，返回查询结果（object）。
+        ///     执行一条计算查询结果语句，返回查询结果（object）。
         /// </summary>
         /// <param name="SQLString">计算查询结果语句</param>
         /// <returns>查询结果（object）</returns>
         public static object GetSingle(string SQLString)
         {
-            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            using (var connection = new SQLiteConnection(connectionString))
             {
-                using (SQLiteCommand cmd = new SQLiteCommand(SQLString, connection))
+                using (var cmd = new SQLiteCommand(SQLString, connection))
                 {
                     try
                     {
@@ -238,15 +238,16 @@ namespace TomorrowSoft.DBUtility
                 }
             }
         }
+
         /// <summary>
-        /// 执行查询语句，返回SQLiteDataReader
+        ///     执行查询语句，返回SQLiteDataReader
         /// </summary>
         /// <param name="strSQL">查询语句</param>
         /// <returns>SQLiteDataReader</returns>
         public static SQLiteDataReader ExecuteReader(string strSQL)
         {
-            SQLiteConnection connection = new SQLiteConnection(connectionString);
-            SQLiteCommand cmd = new SQLiteCommand(strSQL, connection);
+            var connection = new SQLiteConnection(connectionString);
+            var cmd = new SQLiteCommand(strSQL, connection);
             try
             {
                 connection.Open();
@@ -257,48 +258,47 @@ namespace TomorrowSoft.DBUtility
             {
                 throw new Exception(e.Message);
             }
-
         }
+
         /// <summary>
-        /// 执行查询语句，返回DataSet
+        ///     执行查询语句，返回DataSet
         /// </summary>
         /// <param name="SQLString">查询语句</param>
         /// <returns>DataSet</returns>
         public static DataSet Query(string SQLString)
         {
-            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            using (var connection = new SQLiteConnection(connectionString))
             {
-                DataSet ds = new DataSet();
+                var ds = new DataSet();
                 try
                 {
                     connection.Open();
-                    SQLiteDataAdapter command = new SQLiteDataAdapter(SQLString, connection);
+                    var command = new SQLiteDataAdapter(SQLString, connection);
                     command.Fill(ds, "ds");
                 }
                 catch (SQLiteException ex)
                 {
-                   throw new Exception(ex.Message);
+                    throw new Exception(ex.Message);
                 }
                 return ds;
             }
         }
-
 
         #endregion
 
         #region 执行带参数的SQL语句
 
         /// <summary>
-        /// 执行SQL语句，返回影响的记录数
+        ///     执行SQL语句，返回影响的记录数
         /// </summary>
         /// <param name="SQLString">SQL语句</param>
         /// <param name="cmdParms"></param>
         /// <returns>影响的记录数</returns>
         public static int ExecuteSql(string SQLString, params SQLiteParameter[] cmdParms)
         {
-            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            using (var connection = new SQLiteConnection(connectionString))
             {
-                using (SQLiteCommand cmd = new SQLiteCommand())
+                using (var cmd = new SQLiteCommand())
                 {
                     try
                     {
@@ -317,24 +317,24 @@ namespace TomorrowSoft.DBUtility
 
 
         /// <summary>
-        /// 执行多条SQL语句，实现数据库事务。
+        ///     执行多条SQL语句，实现数据库事务。
         /// </summary>
         /// <param name="SQLStringList">SQL语句的哈希表（key为sql语句，value是该语句的SQLiteParameter[]）</param>
         public static void ExecuteSqlTran(Hashtable SQLStringList)
         {
-            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            using (var conn = new SQLiteConnection(connectionString))
             {
                 conn.Open();
                 using (SQLiteTransaction trans = conn.BeginTransaction())
                 {
-                    SQLiteCommand cmd = new SQLiteCommand();
+                    var cmd = new SQLiteCommand();
                     try
                     {
                         //循环
                         foreach (DictionaryEntry myDE in SQLStringList)
                         {
                             string cmdText = myDE.Key.ToString();
-                            SQLiteParameter[] cmdParms = (SQLiteParameter[])myDE.Value;
+                            var cmdParms = (SQLiteParameter[]) myDE.Value;
                             PrepareCommand(cmd, conn, trans, cmdText, cmdParms);
                             int val = cmd.ExecuteNonQuery();
                             cmd.Parameters.Clear();
@@ -353,15 +353,15 @@ namespace TomorrowSoft.DBUtility
 
 
         /// <summary>
-        /// 执行一条计算查询结果语句，返回查询结果（object）。
+        ///     执行一条计算查询结果语句，返回查询结果（object）。
         /// </summary>
         /// <param name="SQLString">计算查询结果语句</param>
         /// <returns>查询结果（object）</returns>
         public static object GetSingle(string SQLString, params SQLiteParameter[] cmdParms)
         {
-            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            using (var connection = new SQLiteConnection(connectionString))
             {
-                using (SQLiteCommand cmd = new SQLiteCommand())
+                using (var cmd = new SQLiteCommand())
                 {
                     try
                     {
@@ -386,14 +386,14 @@ namespace TomorrowSoft.DBUtility
         }
 
         /// <summary>
-        /// 执行查询语句，返回SQLiteDataReader
+        ///     执行查询语句，返回SQLiteDataReader
         /// </summary>
         /// <param name="strSQL">查询语句</param>
         /// <returns>SQLiteDataReader</returns>
         public static SQLiteDataReader ExecuteReader(string SQLString, params SQLiteParameter[] cmdParms)
         {
-            SQLiteConnection connection = new SQLiteConnection(connectionString);
-            SQLiteCommand cmd = new SQLiteCommand();
+            var connection = new SQLiteConnection(connectionString);
+            var cmd = new SQLiteCommand();
             try
             {
                 PrepareCommand(cmd, connection, null, SQLString, cmdParms);
@@ -405,23 +405,22 @@ namespace TomorrowSoft.DBUtility
             {
                 throw new Exception(e.Message);
             }
-
         }
 
         /// <summary>
-        /// 执行查询语句，返回DataSet
+        ///     执行查询语句，返回DataSet
         /// </summary>
         /// <param name="SQLString">查询语句</param>
         /// <returns>DataSet</returns>
         public static DataSet Query(string SQLString, params SQLiteParameter[] cmdParms)
         {
-            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            using (var connection = new SQLiteConnection(connectionString))
             {
-                SQLiteCommand cmd = new SQLiteCommand();
+                var cmd = new SQLiteCommand();
                 PrepareCommand(cmd, connection, null, SQLString, cmdParms);
-                using (SQLiteDataAdapter da = new SQLiteDataAdapter(cmd))
+                using (var da = new SQLiteDataAdapter(cmd))
                 {
-                    DataSet ds = new DataSet();
+                    var ds = new DataSet();
                     try
                     {
                         da.Fill(ds, "ds");
@@ -437,7 +436,8 @@ namespace TomorrowSoft.DBUtility
         }
 
 
-        private static void PrepareCommand(SQLiteCommand cmd, SQLiteConnection conn, SQLiteTransaction trans, string cmdText, IEnumerable<SQLiteParameter> cmdParms)
+        private static void PrepareCommand(SQLiteCommand cmd, SQLiteConnection conn, SQLiteTransaction trans,
+                                           string cmdText, IEnumerable<SQLiteParameter> cmdParms)
         {
             if (conn.State != ConnectionState.Open)
                 conn.Open();
@@ -445,7 +445,7 @@ namespace TomorrowSoft.DBUtility
             cmd.CommandText = cmdText;
             if (trans != null)
                 cmd.Transaction = trans;
-            cmd.CommandType = CommandType.Text;//cmdType;
+            cmd.CommandType = CommandType.Text; //cmdType;
             if (cmdParms != null)
             {
                 foreach (SQLiteParameter parm in cmdParms)
@@ -457,9 +457,9 @@ namespace TomorrowSoft.DBUtility
 
         public static int ExecuteSql(string sqlString, IEnumerable<SQLiteParameter> cmdParms)
         {
-            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            using (var connection = new SQLiteConnection(connectionString))
             {
-                using (SQLiteCommand cmd = new SQLiteCommand())
+                using (var cmd = new SQLiteCommand())
                 {
                     try
                     {

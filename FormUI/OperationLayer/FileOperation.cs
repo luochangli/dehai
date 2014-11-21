@@ -5,15 +5,14 @@ namespace FormUI.OperationLayer
 {
     public class FileOperation
     {
-        static readonly string _picLute = string.Format("{0}\\Picture\\",System .Environment .CurrentDirectory );
+        private static readonly string _picLute = string.Format("{0}\\Picture\\", Environment.CurrentDirectory);
 
-       static public void SaveFile(string srcFile)
+        public static void SaveFile(string srcFile)
         {
-            
-           if (File.Exists(_picLute))
-           {
-               File.Delete(_picLute);
-           }
+            if (File.Exists(_picLute))
+            {
+                File.Delete(_picLute);
+            }
             if (!File.Exists(_picLute))
             {
                 Directory.CreateDirectory(_picLute);
@@ -22,17 +21,17 @@ namespace FormUI.OperationLayer
 
             string desPic = _picLute + "BackGroundPic.jpg";
             File.Copy(srcFile, desPic, true);
-
         }
-        static public string GetFile()
+
+        public static string GetFile()
         {
             string[] files = Directory.GetFileSystemEntries(_picLute);
             string desFile = null;
-            foreach (var file in files)
+            foreach (string file in files)
             {
-                desFile =  file;
+                desFile = file;
             }
             return desFile;
-        } 
+        }
     }
 }

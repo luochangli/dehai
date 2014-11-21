@@ -14,7 +14,10 @@ namespace FormUI.Attributes
         {
         }
 
-        public string Name { get { return "AOP"; } }
+        public string Name
+        {
+            get { return "AOP"; }
+        }
 
 
         public IMessageSink GetServerContextSink(IMessageSink nextSink)

@@ -6,7 +6,7 @@ namespace Infrastructure
     public static class Handler
     {
         /// <summary>
-        /// 只能输入数字
+        ///     只能输入数字
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -18,15 +18,15 @@ namespace Infrastructure
             }
         }
 
-        public static void Nuber09(object sender,KeyPressEventArgs e)
+        public static void Nuber09(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar != '\b')//这是允许输入退格键  
+            if (e.KeyChar != '\b') //这是允许输入退格键  
             {
-                if ((e.KeyChar < '0') || (e.KeyChar > '9'))//这是允许输入0-9数字  
+                if ((e.KeyChar < '0') || (e.KeyChar > '9')) //这是允许输入0-9数字  
                 {
                     e.Handled = true;
                 }
-            }  
+            }
         }
     }
 }

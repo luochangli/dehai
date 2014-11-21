@@ -5,11 +5,11 @@ namespace BLL
 {
     public class MessageIndexService
     {
-        private MessageIndexRepository _repository = new MessageIndexRepository();
+        private readonly MessageIndexRepository _repository = new MessageIndexRepository();
 
         public bool Add(string mesIndex)
         {
-           return _repository.Add(mesIndex);
+            return _repository.Add(mesIndex);
         }
 
         public DataTable GetAll()

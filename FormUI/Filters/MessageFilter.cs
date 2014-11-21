@@ -1,28 +1,31 @@
 ﻿using System;
+using System.Collections.Generic;
 using BLL;
 using FormUI.OperationLayer;
-using TomorrowSoft.BLL;
 using TomorrowSoft.Model;
 
 namespace FormUI.Filters
 {
     public class MessageFilter : Filter
     {
+        private string content;
+        private string phone;
+        private string text;
+        private DateTime time;
+
+        public MessageFilter(Filter next) : base(next)
+        {
+        }
+
         public override string Phone { get; protected set; }
         public override DateTime Time { get; set; }
         public override string Context { get; set; }
         public override string Content1 { get; set; }
         public override bool IsQsDown { get; set; }
-        
-        public override string Name {
-            get { return "收信"; }
-        }
-        private string phone;
-        private DateTime time;
-        private string content;
-        private string text;
-        public MessageFilter(Filter next) : base(next)
+
+        public override string Name
         {
+            get { return "收信"; }
         }
 
         public override Filter Run()
@@ -34,12 +37,12 @@ namespace FormUI.Filters
                 int current;
                 int total;
                 string identifier;
-                AT.GetSmsContent(Content[1],out isLongMessage, out phone, out time, out content,out current,out total,out identifier);
+                AT.GetSmsContent(Content[1], out isLongMessage, out phone, out time, out content, out current, out total,
+                                 out identifier);
                 if (phone.StartsWith("86"))
-                    phone=phone.Remove(0, 2);
+                    phone = phone.Remove(0, 2);
                 if (White.PhoneExists(phone) || Terminal.PhoneExists(phone))
                 {
-                    
                     if (isLongMessage)
                     {
                         var service = new LongSmsService();
@@ -53,20 +56,19 @@ namespace FormUI.Filters
                                 Total = total
                             });
 
-                        var longSmses = service.GetBy(phone, identifier, time);
+                        IList<LongSms> longSmses = service.GetBy(phone, identifier, time);
                         if (longSmses.Count < total)
                             return null;
                         content = string.Empty;
-                        foreach (var sms in longSmses)
+                        foreach (LongSms sms in longSmses)
                         {
                             content += sms.Content;
                         }
-                       
                     }
                     IsQsDown = false;
                     if (content.Contains("喇叭"))
                     {
-                        ConditionFilter conditionFilter = new ConditionFilter();
+                        var conditionFilter = new ConditionFilter();
                         conditionFilter.FilterCondition(phone, content, Name);
                         IsQsDown = !conditionFilter.PhotovoltaicCompare(out text);
                     }
@@ -81,7 +83,6 @@ namespace FormUI.Filters
                     return this;
                 }
                 return null;
-
             }
             return base.Run();
         }

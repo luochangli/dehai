@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SQLite;
 using System.Text;
 using TomorrowSoft.DBUtility;
+using TomorrowSoft.Model;
 
 //Please add references
 
@@ -18,7 +19,7 @@ namespace TomorrowSoft.DAL
         /// <summary>
         ///     增加一条数据
         /// </summary>
-        public bool Add(TomorrowSoft.Model.RegularPlay model)
+        public bool Add(RegularPlay model)
         {
             var strSql = new StringBuilder();
             strSql.Append("insert into RegularPlay(");
@@ -32,11 +33,11 @@ namespace TomorrowSoft.DAL
                     new SQLiteParameter("@Music", DbType.String, 50),
                     new SQLiteParameter("@PlayType", DbType.String, 50),
                     new SQLiteParameter("@Status", DbType.Int32),
-                     new SQLiteParameter("@Phone", DbType.String, 50),
-                     new SQLiteParameter("@PlayTimes", DbType.String, 50),
-                     new SQLiteParameter( "@TerminalName",DbType.String)
+                    new SQLiteParameter("@Phone", DbType.String, 50),
+                    new SQLiteParameter("@PlayTimes", DbType.String, 50),
+                    new SQLiteParameter("@TerminalName", DbType.String)
                 };
-    
+
             parameters[0].Value = model.RegularType;
             parameters[1].Value = model.Time;
             parameters[2].Value = model.Music;
@@ -60,7 +61,7 @@ namespace TomorrowSoft.DAL
         /// <summary>
         ///     更新一条数据
         /// </summary>
-        public bool Update(TomorrowSoft.Model.RegularPlay model)
+        public bool Update(RegularPlay model)
         {
             var strSql = new StringBuilder();
             strSql.Append("update RegularPlay set ");
@@ -73,7 +74,7 @@ namespace TomorrowSoft.DAL
             strSql.Append("Phone=@Phone,");
             strSql.Append("PlayTimes=@PlayTimes  ");
             strSql.Append(" where Id=@Id ");
-         
+
             SQLiteParameter[] parameters =
                 {
                     new SQLiteParameter("@Id", DbType.Int32, 8),
@@ -115,8 +116,10 @@ namespace TomorrowSoft.DAL
             var strSql = new StringBuilder();
             strSql.Append("delete from RegularPlay ");
             strSql.Append(" where Id=@Id ");
-            SQLiteParameter[] parameters = {
-					new SQLiteParameter("@Id",  DbType.Int32,16)			};
+            SQLiteParameter[] parameters =
+                {
+                    new SQLiteParameter("@Id", DbType.Int32, 16)
+                };
             parameters[0].Value = id;
 
             int rows = DbHelperSQLite.ExecuteSql(strSql.ToString(), parameters);
@@ -127,7 +130,7 @@ namespace TomorrowSoft.DAL
         /// <summary>
         ///     得到一个对象实体
         /// </summary>
-        public TomorrowSoft.Model.RegularPlay GetModel()
+        public RegularPlay GetModel()
         {
             //该表无主键信息，请自定义主键/条件字段
             var strSql = new StringBuilder();
@@ -137,7 +140,7 @@ namespace TomorrowSoft.DAL
                 {
                 };
 
-            var model = new TomorrowSoft.Model.RegularPlay();
+            var model = new RegularPlay();
             DataSet ds = DbHelperSQLite.Query(strSql.ToString(), parameters);
             if (ds.Tables[0].Rows.Count > 0)
             {
@@ -153,9 +156,9 @@ namespace TomorrowSoft.DAL
         /// <summary>
         ///     得到一个对象实体
         /// </summary>
-        public TomorrowSoft.Model.RegularPlay DataRowToModel(DataRow row)
+        public RegularPlay DataRowToModel(DataRow row)
         {
-            var model = new TomorrowSoft.Model.RegularPlay();
+            var model = new RegularPlay();
             if (row != null)
             {
                 if (row["Id"] != null && row["Id"].ToString() != "")
@@ -180,7 +183,7 @@ namespace TomorrowSoft.DAL
                 }
                 if (row["Status"] != null)
                 {
-                    model.Status = int .Parse( row["Status"].ToString());
+                    model.Status = int.Parse(row["Status"].ToString());
                 }
                 if (row["Phone"] != null)
                 {
@@ -261,7 +264,6 @@ namespace TomorrowSoft.DAL
             return DbHelperSQLite.Query(strSql.ToString());
         }
 
-     
         #endregion  BasicMethod
 
         #region  ExtensionMethod

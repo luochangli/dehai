@@ -1,27 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using FormUI.OperationLayer;
+using Infrastructure;
 
 namespace FormUI.ManagerForms
 {
     public partial class Alarm : Form
     {
-        private IList<ListViewItem> Items;
-        private OrderDefinition _order;
-        public Alarm( IList<ListViewItem> items)
+        private readonly IList<ListViewItem> Items;
+        private readonly OrderDefinition _order;
+
+        public Alarm(IList<ListViewItem> items)
         {
             InitializeComponent();
             Items = items;
-            _order = new OrderDefinition();
-            txtＭinute.KeyPress += Infrastructure.Handler.Nuber09;
 
+            _order = new OrderDefinition();
         }
 
         private void btOk_Click(object sender, EventArgs e)
@@ -33,26 +29,30 @@ namespace FormUI.ManagerForms
             {
                 try
                 {
+                    string music = cmbMusic.Text;
+                    string minute = txtＭinute.Text.Trim();
                     var t = new ThreadStart(() =>
                         {
-                            foreach (var item in Items)
+                            foreach (ListViewItem item in Items)
                             {
-                                _order.Alarm(item.Text, item.ToolTipText, txtＭinute.Text.Trim());
+                                _order.Alarm(item.Text, item.ToolTipText, music, minute);
                             }
                         });
                     new Thread(t).Start();
-                   
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
-                } 
-                this.Close();
+                }
+                Close();
             }
         }
 
-     
-
-       
+        private void Alarm_Load(object sender, EventArgs e)
+        {
+            OrderDefinition.SetMusicNo(cmbMusic);
+            cmbMusic.SelectedIndex = 0;
+            txtＭinute.KeyPress += Handler.Nuber09;
+        }
     }
 }

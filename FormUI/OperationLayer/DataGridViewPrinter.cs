@@ -6,49 +6,68 @@ using System.Windows.Forms;
 
 namespace FormUI.OperationLayer
 {
-    class DataGridViewPrinter
+    internal class DataGridViewPrinter
     {
-        private DataGridView TheDataGridView; // The DataGridView Control which will be printed
-        private PrintDocument ThePrintDocument; // The PrintDocument to be used for printing
-        private bool IsCenterOnPage; // Determine if the report will be printed in the Top-Center of the page
-        private bool IsWithTitle; // Determine if the page contain title text
-        private string TheTitleText; // The title text to be printed in each page (if IsWithTitle is set to true)
-        private Font TheTitleFont; // The font to be used with the title text (if IsWithTitle is set to true)
-        private Color TheTitleColor; // The color to be used with the title text (if IsWithTitle is set to true)
-        private bool IsWithPaging; // Determine if paging is used
-        private PrintDocument MyDocument;
-        static int CurrentRow; // A static parameter that keep track on which Row (in the DataGridView control) that should be printed
- 
-        static int PageNumber;
- 
-        private int PageWidth;
-        private int PageHeight;
-        private int LeftMargin;
-        private int TopMargin;
-        private int RightMargin;
+        private static int CurrentRow;
+                           // A static parameter that keep track on which Row (in the DataGridView control) that should be printed
+
+        private static int PageNumber;
+        private readonly PrintDocument MyDocument;
+
         private int BottomMargin;
- 
-        private float CurrentY; // A parameter that keep track on the y coordinate of the page, so the next object to be printed will start from this y coordinate
- 
+        private List<float> ColumnsWidth;
+
+        private float CurrentY;
+                      // A parameter that keep track on the y coordinate of the page, so the next object to be printed will start from this y coordinate
+
+        private bool IsCenterOnPage; // Determine if the report will be printed in the Top-Center of the page
+        private bool IsWithPaging; // Determine if paging is used
+        private bool IsWithTitle; // Determine if the page contain title text
+        private int LeftMargin;
+        private int PageHeight;
+        private int PageWidth;
+        private int RightMargin;
+
         private float RowHeaderHeight;
         private List<float> RowsHeight;
-        private List<float> ColumnsWidth;
+        private DataGridView TheDataGridView; // The DataGridView Control which will be printed
         private float TheDataGridViewWidth;
-        
+        private PrintDocument ThePrintDocument; // The PrintDocument to be used for printing
+        private Color TheTitleColor; // The color to be used with the title text (if IsWithTitle is set to true)
+        private Font TheTitleFont; // The font to be used with the title text (if IsWithTitle is set to true)
+        private string TheTitleText; // The title text to be printed in each page (if IsWithTitle is set to true)
+        private int TopMargin;
+        private int mColumnPoint;
+
         // Maintain a generic list to hold start/stop points for the column printing
         // This will be used for wrapping in situations where the DataGridView will not fit on a single page
         private List<int[]> mColumnPoints;
         private List<float> mColumnPointsWidth;
-        private int mColumnPoint;
+
+        // The class constructor
+        public DataGridViewPrinter(DataGridView aDataGridView, PrintDocument aPrintDocument, bool CenterOnPage,
+                                   bool WithTitle, string aTitleText, Font aTitleFont, Color aTitleColor,
+                                   bool WithPaging)
+        {
+            // PrintData(aDataGridView, aPrintDocument, CenterOnPage, WithTitle, aTitleText, aTitleFont, aTitleColor, WithPaging);
+        }
+
+        public DataGridViewPrinter()
+        {
+            MyDocument = new PrintDocument();
+            MyDocument.PrintPage += MyPrintDocumetEvent;
+        }
+
         private void MyPrintDocumetEvent(object sender, PrintPageEventArgs e)
         {
             bool more = DrawDataGridView(e.Graphics);
-            if (more == true)
+            if (more)
                 e.HasMorePages = true;
         }
-        public  bool SetupThePrinting(DataGridView dataGridView1)
+
+        public bool SetupThePrinting(DataGridView dataGridView1)
         {
-            PrintDialog MyPrintDialog = new PrintDialog();
+            var MyPrintDialog = new PrintDialog();
             MyPrintDialog.AllowCurrentPage = false;
             MyPrintDialog.AllowPrintToFile = false;
             MyPrintDialog.AllowSelection = false;
@@ -66,31 +85,24 @@ namespace FormUI.OperationLayer
             MyDocument.DefaultPageSettings.Margins = new Margins(20, 20, 30, 30);
 
 
-            PrintData(dataGridView1, MyDocument, true, true, "通信记录", new Font("宋体", 9, FontStyle.Regular), Color.Black, true);
+            PrintData(dataGridView1, MyDocument, true, true, "通信记录", new Font("宋体", 9, FontStyle.Regular), Color.Black,
+                      true);
 
             //MyDataGridViewPrinter = new DataGridViewPrinter(dataGridView1, MyPrintDocument, false, true, "通信记录", new Font("Tahoma", 18, FontStyle.Bold, GraphicsUnit.Point), Color.Black, true);
 
             return true;
         }
-        // The class constructor
-        public DataGridViewPrinter(DataGridView aDataGridView, PrintDocument aPrintDocument, bool CenterOnPage, bool WithTitle, string aTitleText, Font aTitleFont, Color aTitleColor, bool WithPaging)
-        {
-           // PrintData(aDataGridView, aPrintDocument, CenterOnPage, WithTitle, aTitleText, aTitleFont, aTitleColor, WithPaging);
-        }
-        public DataGridViewPrinter()
-        {
-            MyDocument = new PrintDocument();
-            MyDocument.PrintPage += MyPrintDocumetEvent;
-        }
+
         public void PrintView(DataGridView dataGridView1)
         {
             if (SetupThePrinting(dataGridView1))
             {
-                PrintPreviewDialog MyPrintPreviewDialog = new PrintPreviewDialog();
+                var MyPrintPreviewDialog = new PrintPreviewDialog();
                 MyPrintPreviewDialog.Document = MyDocument;
                 MyPrintPreviewDialog.ShowDialog();
             }
         }
+
         public void Print(DataGridView dataGridView1)
         {
             try
@@ -103,7 +115,9 @@ namespace FormUI.OperationLayer
                 throw new Exception(e.ToString());
             }
         }
-        private void PrintData(DataGridView aDataGridView, PrintDocument aPrintDocument, bool CenterOnPage, bool WithTitle,
+
+        private void PrintData(DataGridView aDataGridView, PrintDocument aPrintDocument, bool CenterOnPage,
+                               bool WithTitle,
                                string aTitleText, Font aTitleFont, Color aTitleColor, bool WithPaging)
         {
             TheDataGridView = aDataGridView;
@@ -150,31 +164,34 @@ namespace FormUI.OperationLayer
         {
             if (PageNumber == 0) // Just calculate once
             {
-                SizeF tmpSize = new SizeF();
+                var tmpSize = new SizeF();
                 Font tmpFont;
                 float tmpWidth;
- 
+
                 TheDataGridViewWidth = 0;
                 for (int i = 0; i < TheDataGridView.Columns.Count; i++)
                 {
                     tmpFont = TheDataGridView.ColumnHeadersDefaultCellStyle.Font;
-                    if (tmpFont == null) // If there is no special HeaderFont style, then use the default DataGridView font style
+                    if (tmpFont == null)
+                        // If there is no special HeaderFont style, then use the default DataGridView font style
                         tmpFont = TheDataGridView.DefaultCellStyle.Font;
- 
+
                     tmpSize = g.MeasureString(TheDataGridView.Columns[i].HeaderText, tmpFont);
                     tmpWidth = tmpSize.Width;
                     RowHeaderHeight = tmpSize.Height;
- 
+
                     for (int j = 0; j < TheDataGridView.Rows.Count; j++)
                     {
                         tmpFont = TheDataGridView.Rows[j].DefaultCellStyle.Font;
-                        if (tmpFont == null) // If the there is no special font style of the CurrentRow, then use the default one associated with the DataGridView control
+                        if (tmpFont == null)
+                            // If the there is no special font style of the CurrentRow, then use the default one associated with the DataGridView control
                             tmpFont = TheDataGridView.DefaultCellStyle.Font;
- 
+
                         tmpSize = g.MeasureString("Anything", tmpFont);
                         RowsHeight.Add(tmpSize.Height);
- 
-                        tmpSize = g.MeasureString(TheDataGridView.Rows[j].Cells[i].EditedFormattedValue.ToString(), tmpFont);
+
+                        tmpSize = g.MeasureString(TheDataGridView.Rows[j].Cells[i].EditedFormattedValue.ToString(),
+                                                  tmpFont);
                         if (tmpSize.Width > tmpWidth)
                             tmpWidth = tmpSize.Width;
                     }
@@ -182,12 +199,12 @@ namespace FormUI.OperationLayer
                         TheDataGridViewWidth += tmpWidth;
                     ColumnsWidth.Add(tmpWidth);
                 }
- 
+
                 // Define the start/stop column points based on the page width and the DataGridView Width
                 // We will use this to determine the columns which are drawn on each page and how wrapping will be handled
                 // By default, the wrapping will occurr such that the maximum number of columns for a page will be determine
                 int k;
- 
+
                 int mStartPoint = 0;
                 for (k = 0; k < TheDataGridView.Columns.Count; k++)
                     if (TheDataGridView.Columns[k].Visible)
@@ -195,7 +212,7 @@ namespace FormUI.OperationLayer
                         mStartPoint = k;
                         break;
                     }
- 
+
                 int mEndPoint = TheDataGridView.Columns.Count;
                 for (k = TheDataGridView.Columns.Count - 1; k >= 0; k--)
                     if (TheDataGridView.Columns[k].Visible)
@@ -203,10 +220,10 @@ namespace FormUI.OperationLayer
                         mEndPoint = k + 1;
                         break;
                     }
- 
+
                 float mTempWidth = TheDataGridViewWidth;
-                float mTempPrintArea = (float)PageWidth - (float)LeftMargin - (float)RightMargin;
-            
+                float mTempPrintArea = PageWidth - (float) LeftMargin - RightMargin;
+
                 // We only care about handling where the total datagridview width is bigger then the print area
                 if (TheDataGridViewWidth > mTempPrintArea)
                 {
@@ -220,7 +237,7 @@ namespace FormUI.OperationLayer
                             if (mTempWidth > mTempPrintArea)
                             {
                                 mTempWidth -= ColumnsWidth[k];
-                                mColumnPoints.Add(new int[] { mStartPoint, mEndPoint });
+                                mColumnPoints.Add(new[] {mStartPoint, mEndPoint});
                                 mColumnPointsWidth.Add(mTempWidth);
                                 mStartPoint = k;
                                 mTempWidth = ColumnsWidth[k];
@@ -231,98 +248,110 @@ namespace FormUI.OperationLayer
                     }
                 }
                 // Add the last set of columns
-                mColumnPoints.Add(new int[] { mStartPoint, mEndPoint });
+                mColumnPoints.Add(new[] {mStartPoint, mEndPoint});
                 mColumnPointsWidth.Add(mTempWidth);
                 mColumnPoint = 0;
             }
         }
- 
+
         // The funtion that print the title, page number, and the header row
         private void DrawHeader(Graphics g)
         {
-            CurrentY = (float)TopMargin;
- 
+            CurrentY = TopMargin;
+
             // Printing the page number (if isWithPaging is set to true)
             if (IsWithPaging)
             {
                 PageNumber++;
                 string PageString = "Page " + PageNumber.ToString();
- 
-                StringFormat PageStringFormat = new StringFormat();
+
+                var PageStringFormat = new StringFormat();
                 PageStringFormat.Trimming = StringTrimming.Word;
-                PageStringFormat.FormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
+                PageStringFormat.FormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.LineLimit |
+                                               StringFormatFlags.NoClip;
                 PageStringFormat.Alignment = StringAlignment.Far;
- 
-                Font PageStringFont = new Font("Tahoma", 8, FontStyle.Regular, GraphicsUnit.Point);
- 
-                RectangleF PageStringRectangle = new RectangleF((float)LeftMargin, CurrentY, (float)PageWidth - (float)RightMargin - (float)LeftMargin, g.MeasureString(PageString, PageStringFont).Height);
- 
-                g.DrawString(PageString, PageStringFont, new SolidBrush(Color.Black), PageStringRectangle, PageStringFormat);
- 
+
+                var PageStringFont = new Font("Tahoma", 8, FontStyle.Regular, GraphicsUnit.Point);
+
+                var PageStringRectangle = new RectangleF(LeftMargin, CurrentY,
+                                                         PageWidth - (float) RightMargin - LeftMargin,
+                                                         g.MeasureString(PageString, PageStringFont).Height);
+
+                g.DrawString(PageString, PageStringFont, new SolidBrush(Color.Black), PageStringRectangle,
+                             PageStringFormat);
+
                 CurrentY += g.MeasureString(PageString, PageStringFont).Height;
             }
- 
+
             // Printing the title (if IsWithTitle is set to true)
             if (IsWithTitle)
             {
-                StringFormat TitleFormat = new StringFormat();
+                var TitleFormat = new StringFormat();
                 TitleFormat.Trimming = StringTrimming.Word;
-                TitleFormat.FormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
+                TitleFormat.FormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.LineLimit |
+                                          StringFormatFlags.NoClip;
                 if (IsCenterOnPage)
                     TitleFormat.Alignment = StringAlignment.Center;
                 else
                     TitleFormat.Alignment = StringAlignment.Near;
- 
-                RectangleF TitleRectangle = new RectangleF((float)LeftMargin, CurrentY, (float)PageWidth - (float)RightMargin - (float)LeftMargin, g.MeasureString(TheTitleText, TheTitleFont).Height);
- 
+
+                var TitleRectangle = new RectangleF(LeftMargin, CurrentY, PageWidth - (float) RightMargin - LeftMargin,
+                                                    g.MeasureString(TheTitleText, TheTitleFont).Height);
+
                 g.DrawString(TheTitleText, TheTitleFont, new SolidBrush(TheTitleColor), TitleRectangle, TitleFormat);
- 
+
                 CurrentY += g.MeasureString(TheTitleText, TheTitleFont).Height;
             }
- 
+
             // Calculating the starting x coordinate that the printing process will start from
-            float CurrentX = (float)LeftMargin;
-            if (IsCenterOnPage)            
-                CurrentX += (((float)PageWidth - (float)RightMargin - (float)LeftMargin) - mColumnPointsWidth[mColumnPoint]) / 2.0F;
- 
+            float CurrentX = LeftMargin;
+            if (IsCenterOnPage)
+                CurrentX += ((PageWidth - (float) RightMargin - LeftMargin) - mColumnPointsWidth[mColumnPoint])/2.0F;
+
             // Setting the HeaderFore style
             Color HeaderForeColor = TheDataGridView.ColumnHeadersDefaultCellStyle.ForeColor;
-            if (HeaderForeColor.IsEmpty) // If there is no special HeaderFore style, then use the default DataGridView style
+            if (HeaderForeColor.IsEmpty)
+                // If there is no special HeaderFore style, then use the default DataGridView style
                 HeaderForeColor = TheDataGridView.DefaultCellStyle.ForeColor;
-            SolidBrush HeaderForeBrush = new SolidBrush(HeaderForeColor);
- 
+            var HeaderForeBrush = new SolidBrush(HeaderForeColor);
+
             // Setting the HeaderBack style
             Color HeaderBackColor = TheDataGridView.ColumnHeadersDefaultCellStyle.BackColor;
-            if (HeaderBackColor.IsEmpty) // If there is no special HeaderBack style, then use the default DataGridView style
+            if (HeaderBackColor.IsEmpty)
+                // If there is no special HeaderBack style, then use the default DataGridView style
                 HeaderBackColor = TheDataGridView.DefaultCellStyle.BackColor;
-            SolidBrush HeaderBackBrush = new SolidBrush(HeaderBackColor);
- 
+            var HeaderBackBrush = new SolidBrush(HeaderBackColor);
+
             // Setting the LinePen that will be used to draw lines and rectangles (derived from the GridColor property of the DataGridView control)
-            Pen TheLinePen = new Pen(TheDataGridView.GridColor, 1);
- 
+            var TheLinePen = new Pen(TheDataGridView.GridColor, 1);
+
             // Setting the HeaderFont style
             Font HeaderFont = TheDataGridView.ColumnHeadersDefaultCellStyle.Font;
-            if (HeaderFont == null) // If there is no special HeaderFont style, then use the default DataGridView font style
+            if (HeaderFont == null)
+                // If there is no special HeaderFont style, then use the default DataGridView font style
                 HeaderFont = TheDataGridView.DefaultCellStyle.Font;
- 
+
             // Calculating and drawing the HeaderBounds        
-            RectangleF HeaderBounds = new RectangleF(CurrentX, CurrentY, mColumnPointsWidth[mColumnPoint], RowHeaderHeight);
+            var HeaderBounds = new RectangleF(CurrentX, CurrentY, mColumnPointsWidth[mColumnPoint], RowHeaderHeight);
             g.FillRectangle(HeaderBackBrush, HeaderBounds);
- 
+
             // Setting the format that will be used to print each cell of the header row
-            StringFormat CellFormat = new StringFormat();
+            var CellFormat = new StringFormat();
             CellFormat.Trimming = StringTrimming.Word;
             CellFormat.FormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
- 
+
             // Printing each visible cell of the header row
             RectangleF CellBounds;
-            float ColumnWidth;        
-            for (int i = (int)mColumnPoints[mColumnPoint].GetValue(0); i < (int)mColumnPoints[mColumnPoint].GetValue(1); i++)
+            float ColumnWidth;
+            for (var i = (int) mColumnPoints[mColumnPoint].GetValue(0);
+                 i < (int) mColumnPoints[mColumnPoint].GetValue(1);
+                 i++)
             {
-                if (!TheDataGridView.Columns[i].Visible) continue; // If the column is not visible then ignore this iteration
- 
+                if (!TheDataGridView.Columns[i].Visible)
+                    continue; // If the column is not visible then ignore this iteration
+
                 ColumnWidth = ColumnsWidth[i];
- 
+
                 // Check the CurrentCell alignment and apply it to the CellFormat
                 if (TheDataGridView.ColumnHeadersDefaultCellStyle.Alignment.ToString().Contains("Right"))
                     CellFormat.Alignment = StringAlignment.Far;
@@ -330,30 +359,31 @@ namespace FormUI.OperationLayer
                     CellFormat.Alignment = StringAlignment.Center;
                 else
                     CellFormat.Alignment = StringAlignment.Near;
- 
+
                 CellBounds = new RectangleF(CurrentX, CurrentY, ColumnWidth, RowHeaderHeight);
- 
+
                 // Printing the cell text
                 g.DrawString(TheDataGridView.Columns[i].HeaderText, HeaderFont, HeaderForeBrush, CellBounds, CellFormat);
- 
+
                 // Drawing the cell bounds
-                if (TheDataGridView.RowHeadersBorderStyle != DataGridViewHeaderBorderStyle.None) // Draw the cell border only if the HeaderBorderStyle is not None
+                if (TheDataGridView.RowHeadersBorderStyle != DataGridViewHeaderBorderStyle.None)
+                    // Draw the cell border only if the HeaderBorderStyle is not None
                     g.DrawRectangle(TheLinePen, CurrentX, CurrentY, ColumnWidth, RowHeaderHeight);
- 
+
                 CurrentX += ColumnWidth;
             }
- 
+
             CurrentY += RowHeaderHeight;
         }
- 
+
         // The function that print a bunch of rows that fit in one page
         // When it returns true, meaning that there are more rows still not printed, so another PagePrint action is required
         // When it returns false, meaning that all rows are printed (the CureentRow parameter reaches the last row of the DataGridView control) and no further PagePrint action is required
         private bool DrawRows(Graphics g)
         {
             // Setting the LinePen that will be used to draw lines and rectangles (derived from the GridColor property of the DataGridView control)
-            Pen TheLinePen = new Pen(TheDataGridView.GridColor, 1);
- 
+            var TheLinePen = new Pen(TheDataGridView.GridColor, 1);
+
             // The style paramters that will be used to print each cell
             Font RowFont;
             Color RowForeColor;
@@ -361,88 +391,104 @@ namespace FormUI.OperationLayer
             SolidBrush RowForeBrush;
             SolidBrush RowBackBrush;
             SolidBrush RowAlternatingBackBrush;
- 
+
             // Setting the format that will be used to print each cell
-            StringFormat CellFormat = new StringFormat();
+            var CellFormat = new StringFormat();
             CellFormat.Trimming = StringTrimming.Word;
             CellFormat.FormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.LineLimit;
- 
+
             // Printing each visible cell
             RectangleF RowBounds;
             float CurrentX;
             float ColumnWidth;
             while (CurrentRow < TheDataGridView.Rows.Count)
             {
-                if (TheDataGridView.Rows[CurrentRow].Visible) // Print the cells of the CurrentRow only if that row is visible
+                if (TheDataGridView.Rows[CurrentRow].Visible)
+                    // Print the cells of the CurrentRow only if that row is visible
                 {
                     // Setting the row font style
                     RowFont = TheDataGridView.Rows[CurrentRow].DefaultCellStyle.Font;
-                    if (RowFont == null) // If the there is no special font style of the CurrentRow, then use the default one associated with the DataGridView control
+                    if (RowFont == null)
+                        // If the there is no special font style of the CurrentRow, then use the default one associated with the DataGridView control
                         RowFont = TheDataGridView.DefaultCellStyle.Font;
- 
+
                     // Setting the RowFore style
                     RowForeColor = TheDataGridView.Rows[CurrentRow].DefaultCellStyle.ForeColor;
-                    if (RowForeColor.IsEmpty) // If the there is no special RowFore style of the CurrentRow, then use the default one associated with the DataGridView control
+                    if (RowForeColor.IsEmpty)
+                        // If the there is no special RowFore style of the CurrentRow, then use the default one associated with the DataGridView control
                         RowForeColor = TheDataGridView.DefaultCellStyle.ForeColor;
                     RowForeBrush = new SolidBrush(RowForeColor);
- 
+
                     // Setting the RowBack (for even rows) and the RowAlternatingBack (for odd rows) styles
                     RowBackColor = TheDataGridView.Rows[CurrentRow].DefaultCellStyle.BackColor;
-                    if (RowBackColor.IsEmpty) // If the there is no special RowBack style of the CurrentRow, then use the default one associated with the DataGridView control
+                    if (RowBackColor.IsEmpty)
+                        // If the there is no special RowBack style of the CurrentRow, then use the default one associated with the DataGridView control
                     {
                         RowBackBrush = new SolidBrush(TheDataGridView.DefaultCellStyle.BackColor);
-                        RowAlternatingBackBrush = new SolidBrush(TheDataGridView.AlternatingRowsDefaultCellStyle.BackColor);
+                        RowAlternatingBackBrush =
+                            new SolidBrush(TheDataGridView.AlternatingRowsDefaultCellStyle.BackColor);
                     }
-                    else // If the there is a special RowBack style of the CurrentRow, then use it for both the RowBack and the RowAlternatingBack styles
+                    else
+                        // If the there is a special RowBack style of the CurrentRow, then use it for both the RowBack and the RowAlternatingBack styles
                     {
                         RowBackBrush = new SolidBrush(RowBackColor);
                         RowAlternatingBackBrush = new SolidBrush(RowBackColor);
                     }
- 
+
                     // Calculating the starting x coordinate that the printing process will start from
-                    CurrentX = (float)LeftMargin;
-                    if (IsCenterOnPage)                    
-                        CurrentX += (((float)PageWidth - (float)RightMargin - (float)LeftMargin) - mColumnPointsWidth[mColumnPoint]) / 2.0F;
- 
+                    CurrentX = LeftMargin;
+                    if (IsCenterOnPage)
+                        CurrentX += ((PageWidth - (float) RightMargin - LeftMargin) - mColumnPointsWidth[mColumnPoint])/
+                                    2.0F;
+
                     // Calculating the entire CurrentRow bounds                
-                    RowBounds = new RectangleF(CurrentX, CurrentY, mColumnPointsWidth[mColumnPoint], RowsHeight[CurrentRow]);
- 
+                    RowBounds = new RectangleF(CurrentX, CurrentY, mColumnPointsWidth[mColumnPoint],
+                                               RowsHeight[CurrentRow]);
+
                     // Filling the back of the CurrentRow
-                    if (CurrentRow % 2 == 0)
+                    if (CurrentRow%2 == 0)
                         g.FillRectangle(RowBackBrush, RowBounds);
                     else
                         g.FillRectangle(RowAlternatingBackBrush, RowBounds);
- 
+
                     // Printing each visible cell of the CurrentRow                
-                    for (int CurrentCell = (int)mColumnPoints[mColumnPoint].GetValue(0); CurrentCell < (int)mColumnPoints[mColumnPoint].GetValue(1); CurrentCell++)
+                    for (var CurrentCell = (int) mColumnPoints[mColumnPoint].GetValue(0);
+                         CurrentCell < (int) mColumnPoints[mColumnPoint].GetValue(1);
+                         CurrentCell++)
                     {
-                        if (!TheDataGridView.Columns[CurrentCell].Visible) continue; // If the cell is belong to invisible column, then ignore this iteration
- 
+                        if (!TheDataGridView.Columns[CurrentCell].Visible)
+                            continue; // If the cell is belong to invisible column, then ignore this iteration
+
                         // Check the CurrentCell alignment and apply it to the CellFormat
                         if (TheDataGridView.Columns[CurrentCell].DefaultCellStyle.Alignment.ToString().Contains("Right"))
                             CellFormat.Alignment = StringAlignment.Far;
-                        else if (TheDataGridView.Columns[CurrentCell].DefaultCellStyle.Alignment.ToString().Contains("Center"))
+                        else if (
+                            TheDataGridView.Columns[CurrentCell].DefaultCellStyle.Alignment.ToString()
+                                                                .Contains("Center"))
                             CellFormat.Alignment = StringAlignment.Center;
                         else
                             CellFormat.Alignment = StringAlignment.Near;
-                    
+
                         ColumnWidth = ColumnsWidth[CurrentCell];
-                        RectangleF CellBounds = new RectangleF(CurrentX, CurrentY, ColumnWidth, RowsHeight[CurrentRow]);
- 
+                        var CellBounds = new RectangleF(CurrentX, CurrentY, ColumnWidth, RowsHeight[CurrentRow]);
+
                         // Printing the cell text
-                        g.DrawString(TheDataGridView.Rows[CurrentRow].Cells[CurrentCell].EditedFormattedValue.ToString(), RowFont, RowForeBrush, CellBounds, CellFormat);
-                    
+                        g.DrawString(
+                            TheDataGridView.Rows[CurrentRow].Cells[CurrentCell].EditedFormattedValue.ToString(), RowFont,
+                            RowForeBrush, CellBounds, CellFormat);
+
                         // Drawing the cell bounds
-                        if (TheDataGridView.CellBorderStyle != DataGridViewCellBorderStyle.None) // Draw the cell border only if the CellBorderStyle is not None
+                        if (TheDataGridView.CellBorderStyle != DataGridViewCellBorderStyle.None)
+                            // Draw the cell border only if the CellBorderStyle is not None
                             g.DrawRectangle(TheLinePen, CurrentX, CurrentY, ColumnWidth, RowsHeight[CurrentRow]);
- 
+
                         CurrentX += ColumnWidth;
                     }
                     CurrentY += RowsHeight[CurrentRow];
- 
+
                     // Checking if the CurrentY is exceeds the page boundries
                     // If so then exit the function and returning true meaning another PagePrint action is required
-                    if ((int)CurrentY > (PageHeight - TopMargin - BottomMargin))
+                    if ((int) CurrentY > (PageHeight - TopMargin - BottomMargin))
                     {
                         CurrentRow++;
                         return true;
@@ -450,10 +496,10 @@ namespace FormUI.OperationLayer
                 }
                 CurrentRow++;
             }
- 
+
             CurrentRow = 0;
             mColumnPoint++; // Continue to print the next group of columns
- 
+
             if (mColumnPoint == mColumnPoints.Count) // Which means all columns are printed
             {
                 mColumnPoint = 0;
@@ -462,7 +508,7 @@ namespace FormUI.OperationLayer
             else
                 return true;
         }
- 
+
         // The method that calls all other functions
         public bool DrawDataGridView(Graphics g)
         {
@@ -475,10 +521,10 @@ namespace FormUI.OperationLayer
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Operation failed: " + ex.Message.ToString(), Application.ProductName + " - Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Operation failed: " + ex.Message, Application.ProductName + " - Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
     }
 }
- 

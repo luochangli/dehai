@@ -3,10 +3,9 @@
 namespace Infrastructure
 {
     /// <summary>
-    /// 假的，忽悠上面的
+    ///     假的，忽悠上面的
     /// </summary>
-    public class AopObject:ContextBoundObject
+    public class AopObject : ContextBoundObject
     {
-         
     }
 }

@@ -266,9 +266,9 @@ namespace FormUI.OperationLayer
         /// <param name="phone"></param>
         /// <param name="minute"></param>
         /// <returns></returns>
-        public string Alarm(string terminalName, string phone, string minute)
+        public string Alarm(string terminalName, string phone, string music ,string minute)
         {
-            comAT.SendChineseMessage(terminalName, phone, "警报" + minute);
+            comAT.SendChineseMessage(terminalName, phone, "播放1" + music + minute);
             return "警报";
         }
 

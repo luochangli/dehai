@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using FormUI.OperationLayer;
 using Infrastructure;
@@ -14,9 +10,9 @@ namespace FormUI
 {
     public partial class OnDemandForm : Form
     {
-        private OrderDefinition _order = new OrderDefinition();
-        private TerminalService _service = new TerminalService();
-        
+        private readonly OrderDefinition _order = new OrderDefinition();
+        private readonly TerminalService _service = new TerminalService();
+
         public OnDemandForm()
         {
             InitializeComponent();
@@ -24,30 +20,31 @@ namespace FormUI
             txtTime1.KeyPress += Handler.PhoneNumber;
             txtTime3.KeyPress += Handler.PhoneNumber;
         }
+
         private void GetTerminalList()
         {
-            BindingSource bs = new BindingSource();
+            var bs = new BindingSource();
             bs.DataSource = _service.GetModelList("");
             dgvPlayOne.DataSource = bs;
             dgvPlayGroup.DataSource = ControlHelpers.DataGridViewCellSetNull(dgvPlayOne);
-
         }
+
         private void OnDemandForm_Load(object sender, EventArgs e)
         {
-            this.cbPlyeStyle.DataSource = _order.PlayStyle;
+            cbPlyeStyle.DataSource = _order.PlayStyle;
             cbPlyeStyle.SelectedIndex = 0;
-            this.cbPlayStyle1.DataSource = _order.PlayStyle;
+            cbPlayStyle1.DataSource = _order.PlayStyle;
             cbPlayStyle1.SelectedIndex = 0;
-            this.cbPlayStyle2.DataSource = _order.PlayStyle;
+            cbPlayStyle2.DataSource = _order.PlayStyle;
             cbPlayStyle2.SelectedIndex = 0;
-            List<string> musicList = new List<string>();
-            for (int i = 0; i <=9;i++)
+            var musicList = new List<string>();
+            for (int i = 0; i <= 9; i++)
             {
                 musicList.Add(i.ToString());
             }
-            this.cbMusicList.DataSource = musicList;
-            this.cbMusicList1.DataSource = musicList;
-            this.cbMusicList2.DataSource = musicList;
+            cbMusicList.DataSource = musicList;
+            cbMusicList1.DataSource = musicList;
+            cbMusicList2.DataSource = musicList;
             dgvPlayOne.AutoGenerateColumns = false;
             dgvPlayGroup.AutoGenerateColumns = false;
             GetTerminalList();
@@ -88,8 +85,7 @@ namespace FormUI
                             var terminal = dgvPlayOne.SelectedRows[index].DataBoundItem as Terminal;
                             if (terminal != null)
                             {
-
-                                _order.PlayMusic(terminal .Name ,terminal.PhoneNo, cbPlyeStyle.SelectedIndex.ToString(),
+                                _order.PlayMusic(terminal.Name, terminal.PhoneNo, cbPlyeStyle.SelectedIndex.ToString(),
                                                  cbMusicList.SelectedItem.ToString(), txtTime.Text);
                             }
                             MessageBox.Show("命令已发送！");
@@ -98,8 +94,6 @@ namespace FormUI
                         {
                             MessageBox.Show("命令失败！");
                         }
-                       
-                        
                     }
                 }
             }
@@ -107,7 +101,6 @@ namespace FormUI
 
         private void btGroupPlayOK_Click(object sender, EventArgs e)
         {
-            
             if (dgvPlayGroup.SelectedRows.Count == 0)
             {
                 MessageBox.Show("请至少选择一行！");
@@ -126,11 +119,10 @@ namespace FormUI
                             var terminal = dgvPlayGroup.SelectedRows[index].DataBoundItem as Terminal;
                             if (terminal != null)
                             {
-
-                                _order.PlayMusic(terminal.Grouping ,terminal.GroupPhone, cbPlyeStyle.SelectedIndex.ToString(),
+                                _order.PlayMusic(terminal.Grouping, terminal.GroupPhone,
+                                                 cbPlyeStyle.SelectedIndex.ToString(),
                                                  cbMusicList.SelectedItem.ToString(), txtTime.Text);
                             }
-
                         }
                         MessageBox.Show("命令已发送！");
                     }
@@ -138,7 +130,6 @@ namespace FormUI
                     {
                         MessageBox.Show("命令失败！");
                     }
-                 
                 }
             }
         }
@@ -146,14 +137,14 @@ namespace FormUI
         private void btPlayAllOK_Click(object sender, EventArgs e)
         {
             var terminal = dgvPlayOne.SelectedRows[2].DataBoundItem as Terminal;
-            if (terminal.AllPhone != null && 
-                MessageBox.Show(string.Format(@"您确定要齐播 {0} 吗？", terminal .AllPhone),
-                                                              "提示",
-                                                              MessageBoxButtons.OKCancel,
-                                                              MessageBoxIcon.Question) == DialogResult.OK)
+            if (terminal.AllPhone != null &&
+                MessageBox.Show(string.Format(@"您确定要齐播 {0} 吗？", terminal.AllPhone),
+                                "提示",
+                                MessageBoxButtons.OKCancel,
+                                MessageBoxIcon.Question) == DialogResult.OK)
             {
-                _order.PlayMusic("群播",terminal.AllPhone, cbPlyeStyle.SelectedIndex.ToString(),
-                                                cbMusicList.SelectedItem.ToString(), txtTime.Text);
+                _order.PlayMusic("群播", terminal.AllPhone, cbPlyeStyle.SelectedIndex.ToString(),
+                                 cbMusicList.SelectedItem.ToString(), txtTime.Text);
             }
         }
     }

@@ -12,14 +12,15 @@ namespace FormUI.SettingForms
 {
     public partial class AutoStartUpOrEsc : Form
     {
+        private readonly IList<ListViewItem> Items;
         private readonly RegularPlayService _service = new RegularPlayService();
-        private  string Phone = string .Empty;
+        private string Phone = string.Empty;
         private string TerminalName = string.Empty;
-        private IList<ListViewItem> Items;
-        public AutoStartUpOrEsc(string phone,string name)
+
+        public AutoStartUpOrEsc(string phone, string name)
         {
             InitializeComponent();
-            this.Phone = phone;
+            Phone = phone;
             TerminalName = name;
         }
 
@@ -44,7 +45,6 @@ namespace FormUI.SettingForms
             CheckboxlistInit();
             GetList();
             timer1.Enabled = true;
-
         }
 
         private void CheckboxlistInit()
@@ -58,7 +58,7 @@ namespace FormUI.SettingForms
             chblModel.Add(new ContralDataModel(5, "星期五"));
             chblModel.Add(new ContralDataModel(6, "星期六"));
 
-            cblWeek.DataSource = chblModel; 
+            cblWeek.DataSource = chblModel;
             cblWeek.DisplayMember = "Name";
             cblWeek.ValueMember = "Id";
         }
@@ -72,22 +72,21 @@ namespace FormUI.SettingForms
                 MessageBox.Show("终端数为0，请选择终端机！");
                 Close();
             }
-           
-                if (GetRadioButtonText() != string.Empty )
-                {
-                    foreach (var item in Items)
-                    {
-                        _service.Add(new RegularPlay(dtpAlarmTime.Value.ToString("HH:mm:ss"), GetRadioButtonText(),
-                                              cmbMusic.Text, cmbStyle.SelectedIndex.ToString(), 0, item.ToolTipText, txtPlayTimes.Text.Trim(), item.Text));
-                    }
 
-                }
-                else
+            if (GetRadioButtonText() != string.Empty)
+            {
+                foreach (ListViewItem item in Items)
                 {
-                    MessageBox.Show("定时类型或播放时间不能为空！");
+                    _service.Add(new RegularPlay(dtpAlarmTime.Value.ToString("HH:mm:ss"), GetRadioButtonText(),
+                                                 cmbMusic.Text, cmbStyle.SelectedIndex.ToString(), 0, item.ToolTipText,
+                                                 txtPlayTimes.Text.Trim(), item.Text));
                 }
-                GetList();
-
+            }
+            else
+            {
+                MessageBox.Show("定时类型或播放时间不能为空！");
+            }
+            GetList();
         }
 
         private void rbWeek_CheckedChanged(object sender, EventArgs e)
@@ -95,24 +94,24 @@ namespace FormUI.SettingForms
             cblWeek.Visible = true;
         }
 
-    
+
         private string GetRadioButtonText()
         {
-            Control.ControlCollection cc = this.Controls.Find("groupBoxRadio", true)[0].Controls;
+            Control.ControlCollection cc = Controls.Find("groupBoxRadio", true)[0].Controls;
             foreach (Control c in cc)
             {
                 if (c is RadioButton)
                 {
-                    RadioButton rbtn = (RadioButton) c;
+                    var rbtn = (RadioButton) c;
                     if (rbtn.Checked)
                     {
                         if (rbtn.Text == "每月")
                         {
-                            return rbtn.Text +"-" + nudMonth.Value;
+                            return rbtn.Text + "-" + nudMonth.Value;
                         }
                         if (rbtn.Text == "每天")
                         {
-                            return rbtn.Text +"-"+ dtpAlarmTime.Value.ToString("HH:mm:ss")+"*";
+                            return rbtn.Text + "-" + dtpAlarmTime.Value.ToString("HH:mm:ss") + "*";
                         }
                         if (rbtn.Text == "每周")
                         {
@@ -122,9 +121,8 @@ namespace FormUI.SettingForms
                             }
                             else
                             {
-                                 return rbtn.Text + "-" + GetClbValue() ;
+                                return rbtn.Text + "-" + GetClbValue();
                             }
-                           
                         }
                         if (rbtn.Text == "指定时间")
                         {
@@ -146,9 +144,8 @@ namespace FormUI.SettingForms
                 {
                     if (cblWeek.GetItemChecked(i))
                     {
-                        week += cblWeek.GetItemText(cblWeek .Items[i])+" ";
+                        week += cblWeek.GetItemText(cblWeek.Items[i]) + " ";
                     }
-
                 }
             }
             return week;
@@ -161,17 +158,14 @@ namespace FormUI.SettingForms
                 if (MessageBox.Show(string.Format(@"您确定要删除历史记录？"), "提示",
                                     MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-
                     for (int i = 0; i < dataGridView1.SelectedRows.Count; i++)
                     {
                         _service.Delete(Convert.ToInt32(dataGridView1.SelectedRows[i].Cells[0].Value));
                     }
                     MessageBox.Show("删除成功！");
                     GetList();
-                  
                 }
             }
-         
         }
 
         private void chbAutoRun_CheckedChanged(object sender, EventArgs e)
@@ -179,6 +173,7 @@ namespace FormUI.SettingForms
             StartingRun();
             Settings.Default.Save();
         }
+
         private void StartingRun()
         {
             string strName = Application.ExecutablePath;
@@ -220,7 +215,7 @@ namespace FormUI.SettingForms
         {
             if (cmbStyle.SelectedIndex == 0)
             {
-                txtPlayTimes.Text = string .Empty;
+                txtPlayTimes.Text = string.Empty;
                 txtPlayTimes.Enabled = false;
             }
             else
@@ -229,8 +224,5 @@ namespace FormUI.SettingForms
                 txtPlayTimes.Text = "03";
             }
         }
-
-     
-
     }
 }

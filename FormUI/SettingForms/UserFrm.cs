@@ -8,7 +8,7 @@ namespace FormUI.SettingForms
 {
     public partial class UserFrm : Form
     {
-        private UserService _bll;
+        private readonly UserService _bll;
 
         public UserFrm()
         {
@@ -20,14 +20,14 @@ namespace FormUI.SettingForms
         {
             dataGridView1.AutoGenerateColumns = false;
             Display();
-             new ControlHelpers().FormChange(this);
+            new ControlHelpers().FormChange(this);
         }
 
         private void Display()
         {
             dataGridView1.DataSource = _bll.GetModelList("UserName <> 'Tomorrow'");
-           
-            foreach(DataGridViewRow row in  dataGridView1.Rows)
+
+            foreach (DataGridViewRow row in  dataGridView1.Rows)
             {
                 row.Cells["ColumnIndex"].Value = dataGridView1.Rows.IndexOf(row) + 1;
             }
@@ -35,22 +35,22 @@ namespace FormUI.SettingForms
 
         private void btAdd_Click(object sender, EventArgs e)
         {
-            if(string.IsNullOrEmpty(tbUserName.Text))
+            if (string.IsNullOrEmpty(tbUserName.Text))
             {
                 MessageBox.Show("不能添加空内容！");
                 return;
             }
-            if(_bll.GetModelList(string.Format("UserName = '{0}'",tbUserName.Text)).Count>0)
+            if (_bll.GetModelList(string.Format("UserName = '{0}'", tbUserName.Text)).Count > 0)
             {
                 MessageBox.Show("用户名已经存在！");
                 return;
             }
-            if(string.IsNullOrEmpty(tbPwd11.Text))
+            if (string.IsNullOrEmpty(tbPwd11.Text))
             {
                 MessageBox.Show("密码不能为空！");
                 return;
             }
-            if(!tbPwd11.Text.Equals(tbPwd12.Text))
+            if (!tbPwd11.Text.Equals(tbPwd12.Text))
             {
                 MessageBox.Show("两次密码必须相同！");
                 return;
@@ -58,17 +58,17 @@ namespace FormUI.SettingForms
             try
             {
                 _bll.Add(new User
-                             {
-                                 Id=Guid.NewGuid(), 
-                                 UserName = tbUserName.Text,
-                                 Password = tbPwd11.Text,
-                                 Level = "普通用户",
-                                 Remember = false
-                             });
+                    {
+                        Id = Guid.NewGuid(),
+                        UserName = tbUserName.Text,
+                        Password = tbPwd11.Text,
+                        Level = "普通用户",
+                        Remember = false
+                    });
                 MessageBox.Show("添加成功！");
                 Display();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("添加失败！原因：" + ex.Message + "。");
             }
@@ -86,7 +86,7 @@ namespace FormUI.SettingForms
             {
                 var data = dataGridView1.SelectedRows[0].DataBoundItem as User;
 
-                if(data.UserName == "Tomorrow" || data.UserName == "admin")
+                if (data.UserName == "Tomorrow" || data.UserName == "admin")
                 {
                     MessageBox.Show("该账户不允许删除！");
                     return;
@@ -138,7 +138,7 @@ namespace FormUI.SettingForms
             try
             {
                 var data = dataGridView1.SelectedRows[0].DataBoundItem as User;
-                
+
                 if (MessageBox.Show(
                     string.Format(@"您确定重置“{0}”的密码吗？", data.UserName),
                     "提醒",

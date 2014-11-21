@@ -1,8 +1,6 @@
 using System;
 using System.Runtime.Remoting.Messaging;
 using FormUI.OperationLayer;
-using TomorrowSoft.BLL;
-using TomorrowSoft.Model;
 
 namespace FormUI.Attributes
 {
@@ -16,10 +14,10 @@ namespace FormUI.Attributes
         public IMessage SyncProcessMessage(IMessage msg)
         {
             var call = msg as IMethodCallMessage;
-            var attributes = call.MethodBase.GetCustomAttributes(false);
-            Array.Exists(attributes,x=>x.GetType()==typeof(OperationAttribute));
+            object[] attributes = call.MethodBase.GetCustomAttributes(false);
+            Array.Exists(attributes, x => x.GetType() == typeof (OperationAttribute));
             BeforeProcess(call);
-            var retMsg = NextSink.SyncProcessMessage(msg);
+            IMessage retMsg = NextSink.SyncProcessMessage(msg);
             LogProcess(call);
             return retMsg;
         }
@@ -33,14 +31,14 @@ namespace FormUI.Attributes
 
         private void BeforeProcess(IMethodCallMessage call)
         {
-            var attributes = call.MethodBase.GetCustomAttributes(typeof(OperationAttribute), false);
+            object[] attributes = call.MethodBase.GetCustomAttributes(typeof (OperationAttribute), false);
             if (attributes.Length <= 0) return;
             Port.Instance.ReceiveEventEnabled = false;
         }
 
         private void LogProcess(IMethodCallMessage call)
         {
-            var operation = call.MethodBase.GetCustomAttributes(typeof(OperationAttribute), false);
+            object[] operation = call.MethodBase.GetCustomAttributes(typeof (OperationAttribute), false);
             if (operation.Length <= 0) return;
             Port.Instance.ReceiveEventEnabled = true;
         }

@@ -14,7 +14,7 @@ namespace FormUI.OperationLayer
         {
             if (content.Contains("喇叭"))
             {
-                ConditionFilter conditionFilter = new ConditionFilter();
+                var conditionFilter = new ConditionFilter();
                 try
                 {
                     condition.Add(conditionFilter.FilterCondition(phone, content, name));
@@ -23,7 +23,6 @@ namespace FormUI.OperationLayer
                 {
                     MessageBox.Show("接受到的数据参数与预设数据参数不一致。");
                 }
-              
             }
             else
             {

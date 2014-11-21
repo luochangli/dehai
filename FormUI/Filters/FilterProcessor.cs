@@ -1,6 +1,6 @@
 ﻿namespace FormUI.Filters
 {
-    public class FilterProcessor:Filter
+    public class FilterProcessor : Filter
     {
         public FilterProcessor(string[] content)
             : base(content)
@@ -9,13 +9,12 @@
 
         public override Filter Run()
         {
-            return 
+            return
                 new CallInFilter(
-                new HangUpFilter(
-                    new MessageFilter(
-                        new ConnectFilter(
-                            new ErrorFilter(this))))).Run();
+                    new HangUpFilter(
+                        new MessageFilter(
+                            new ConnectFilter(
+                                new ErrorFilter(this))))).Run();
         }
-
     }
 }

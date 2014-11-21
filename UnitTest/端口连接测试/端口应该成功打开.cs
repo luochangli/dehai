@@ -2,7 +2,7 @@
 
 namespace UnitTest.端口连接测试
 {
-    public class 端口应该成功打开:端口连接基类
+    public class 端口应该成功打开 : 端口连接基类
     {
         private Because execute = () => AT.Test();
 

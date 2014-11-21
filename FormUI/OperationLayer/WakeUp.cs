@@ -15,9 +15,12 @@ namespace FormUI.OperationLayer
 
         [DllImport("kernel32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool SetWaitableTimer(SafeWaitHandle hTimer, [In] ref long pDueTime, int lPeriod, IntPtr pfnCompletionRoutine, IntPtr lpArgToCompletionRoutine, bool fResume);
+        public static extern bool SetWaitableTimer(SafeWaitHandle hTimer, [In] ref long pDueTime, int lPeriod,
+                                                   IntPtr pfnCompletionRoutine, IntPtr lpArgToCompletionRoutine,
+                                                   bool fResume);
+
         /// <summary>
-        /// 设置唤醒时间
+        ///     设置唤醒时间
         /// </summary>
         public void SetWaitForWakeUpTime(DateTime OnTime)
         {
@@ -27,7 +30,7 @@ namespace FormUI.OperationLayer
             {
                 if (SetWaitableTimer(handle, ref duetime, 0, IntPtr.Zero, IntPtr.Zero, true))
                 {
-                    using (EventWaitHandle wh = new EventWaitHandle(false, EventResetMode.AutoReset))
+                    using (var wh = new EventWaitHandle(false, EventResetMode.AutoReset))
                     {
                         wh.SafeWaitHandle = handle;
                         Application.SetSuspendState(PowerState.Hibernate, true, false);
@@ -39,7 +42,6 @@ namespace FormUI.OperationLayer
                     throw new Win32Exception(Marshal.GetLastWin32Error());
                 }
             }
-
-        } 
+        }
     }
 }

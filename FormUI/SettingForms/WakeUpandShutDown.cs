@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using FormUI.OperationLayer;
 using Microsoft.Win32;
@@ -24,6 +18,7 @@ namespace FormUI.SettingForms
         {
             StartingRun();
         }
+
         private void StartingRun()
         {
             string strName = Application.ExecutablePath;
@@ -58,11 +53,12 @@ namespace FormUI.SettingForms
         //文本框只能输入数字
         private void text_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar >= 0 && e.KeyChar <60)
+            if (e.KeyChar >= 0 && e.KeyChar < 60)
             {
                 e.Handled = true;
             }
         }
+
         private void btnOK_Click(object sender, EventArgs e)
         {
             if (btnOK.Text == "开始")
@@ -114,7 +110,5 @@ namespace FormUI.SettingForms
                 Process.Start("shutdown -s -t 10");
             }
         }
-
-       
     }
 }

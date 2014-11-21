@@ -9,12 +9,12 @@ namespace FormUI.Filters
 {
     public class ConditionFilter
     {
-        private  string _photovoltaic;
-        private  string _battery;
-        public  string content;
-        public  string[] Horn;
+        public string[] Horn;
+        private string _battery;
+        private string _photovoltaic;
+        public string content;
 
-   /*     private static volatile ConditionFilter instance;
+        /*     private static volatile ConditionFilter instance;
         private static object syncRoot = new object();
         public ConditionFilter (){}
         public static ConditionFilter Instance
@@ -34,16 +34,17 @@ namespace FormUI.Filters
                 return instance;
             }
         }*/
-        public  Condition FilterCondition(string phone, string context, string name)
+
+        public Condition FilterCondition(string phone, string context, string name)
         {
             try
             {
                 string[] result = context.Split(new[]
-                {
-                    "信号强度","光伏", "\r\n", "\n", "\r\t", "电池",
-                    "市电", "功放", "1喇叭", "2喇叭", "3喇叭", "4喇叭"
-                },
-                                          StringSplitOptions.RemoveEmptyEntries);
+                    {
+                        "信号强度", "光伏", "\r\n", "\n", "\r\t", "电池",
+                        "市电", "功放", "1喇叭", "2喇叭", "3喇叭", "4喇叭"
+                    },
+                                                StringSplitOptions.RemoveEmptyEntries);
                 if (result.Length == 6 && !context.Contains("信号强度"))
                 {
                     Horn = result;
@@ -53,17 +54,17 @@ namespace FormUI.Filters
                         _photovoltaic = result[1].Replace("V", string.Empty);
                     }
                     var condition = new Condition
-                    {
-                        PhoneNo = phone,
-                        Battery = result[0],
-                        Photovoltaic = result[1],
-                        Name = name,
-                        Horn1 = result[2],
-                        Horn2 = result[3],
-                        Horn3 = result[4],
-                        Horn4 = result[5],
-                        HandlerTime = DateTime.Now.ToLocalTime()
-                    };
+                        {
+                            PhoneNo = phone,
+                            Battery = result[0],
+                            Photovoltaic = result[1],
+                            Name = name,
+                            Horn1 = result[2],
+                            Horn2 = result[3],
+                            Horn3 = result[4],
+                            Horn4 = result[5],
+                            HandlerTime = DateTime.Now.ToLocalTime()
+                        };
                     return condition;
                 }
                 if (result.Length == 7 && context.Contains("信号强度"))
@@ -75,17 +76,17 @@ namespace FormUI.Filters
                         _photovoltaic = result[2].Replace("V", string.Empty);
                     }
                     var condition = new Condition
-                    {
-                        PhoneNo = phone,
-                        Battery = result[1],
-                        Photovoltaic = result[2],
-                        Name = name,
-                        Horn1 = result[3],
-                        Horn2 = result[4],
-                        Horn3 = result[5],
-                        Horn4 = result[6],
-                        HandlerTime = DateTime.Now.ToLocalTime()
-                    };
+                        {
+                            PhoneNo = phone,
+                            Battery = result[1],
+                            Photovoltaic = result[2],
+                            Name = name,
+                            Horn1 = result[3],
+                            Horn2 = result[4],
+                            Horn3 = result[5],
+                            Horn4 = result[6],
+                            HandlerTime = DateTime.Now.ToLocalTime()
+                        };
                     return condition;
                 }
             }
@@ -93,12 +94,12 @@ namespace FormUI.Filters
             {
                 MessageBox.Show("接受到的数据参数与预设数据参数不一致。");
             }
-          
-           
+
+
             return null;
         }
 
-        public  bool PhotovoltaicCompare(out string text)
+        public bool PhotovoltaicCompare(out string text)
         {
             text = string.Empty;
             DataTable qs = new QsService().GetAll();

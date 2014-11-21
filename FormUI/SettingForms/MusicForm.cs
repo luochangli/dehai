@@ -6,26 +6,22 @@ namespace FormUI.SettingForms
 {
     public partial class MusicForm : Form
     {
-        public string Music { get; set; }
-        public string Style { get; set; }
-        public string Time { get; set; }
-
         public MusicForm()
         {
             InitializeComponent();
         }
 
+        public string Music { get; set; }
+        public string Style { get; set; }
+        public string Time { get; set; }
 
 
         private void btLinkOne_Click(object sender, EventArgs e)
         {
-
-
             Music = cbMusicList.Text;
-            Style = cbPlayStyle.SelectedIndex .ToString( );
+            Style = cbPlayStyle.SelectedIndex.ToString();
             Time = txtTime.Text;
-            this.DialogResult = DialogResult.OK;
-
+            DialogResult = DialogResult.OK;
         }
 
 
@@ -34,7 +30,7 @@ namespace FormUI.SettingForms
             OrderDefinition.SetMusicNo(cbMusicList);
             if (cbMusicList.Text == string.Empty)
             {
-                cbMusicList.Text = MusicNo.语音1 .ToString("D");
+                cbMusicList.Text = MusicNo.语音1.ToString("D");
             }
             OrderDefinition.SetPlayStyle(cbPlayStyle);
             if (cbPlayStyle.Text == string.Empty)

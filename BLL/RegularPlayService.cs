@@ -1,6 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
+using TomorrowSoft.DAL;
+using TomorrowSoft.Model;
 
 namespace TomorrowSoft.BLL
 {
@@ -9,14 +10,14 @@ namespace TomorrowSoft.BLL
     /// </summary>
     public class RegularPlayService
     {
-        private readonly DAL.RegularPlayRepository dal = new DAL.RegularPlayRepository();
+        private readonly RegularPlayRepository dal = new RegularPlayRepository();
 
         #region  BasicMethod
 
         /// <summary>
         ///     增加一条数据
         /// </summary>
-        public bool Add(TomorrowSoft.Model.RegularPlay model)
+        public bool Add(RegularPlay model)
         {
             return dal.Add(model);
         }
@@ -24,7 +25,7 @@ namespace TomorrowSoft.BLL
         /// <summary>
         ///     更新一条数据
         /// </summary>
-        public bool Update(TomorrowSoft.Model.RegularPlay model)
+        public bool Update(RegularPlay model)
         {
             return dal.Update(model);
         }
@@ -41,7 +42,7 @@ namespace TomorrowSoft.BLL
         /// <summary>
         ///     得到一个对象实体
         /// </summary>
-        public TomorrowSoft.Model.RegularPlay GetModel()
+        public RegularPlay GetModel()
         {
             //该表无主键信息，请自定义主键/条件字段
             return dal.GetModel();
@@ -59,7 +60,7 @@ namespace TomorrowSoft.BLL
         /// <summary>
         ///     获得数据列表
         /// </summary>
-        public List<TomorrowSoft.Model.RegularPlay> GetModelList(string strWhere)
+        public List<RegularPlay> GetModelList(string strWhere)
         {
             DataSet ds = dal.GetList(strWhere);
             return DataTableToList(ds.Tables[0]);
@@ -68,13 +69,13 @@ namespace TomorrowSoft.BLL
         /// <summary>
         ///     获得数据列表
         /// </summary>
-        public List<TomorrowSoft.Model.RegularPlay> DataTableToList(DataTable dt)
+        public List<RegularPlay> DataTableToList(DataTable dt)
         {
-            var modelList = new List<TomorrowSoft.Model.RegularPlay>();
+            var modelList = new List<RegularPlay>();
             int rowsCount = dt.Rows.Count;
             if (rowsCount > 0)
             {
-                TomorrowSoft.Model.RegularPlay model;
+                RegularPlay model;
                 for (int n = 0; n < rowsCount; n++)
                 {
                     model = dal.DataRowToModel(dt.Rows[n]);

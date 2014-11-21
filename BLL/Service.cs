@@ -11,7 +11,7 @@ namespace TomorrowSoft.BLL
         #region  Method
 
         /// <summary>
-        /// 得到最大ID
+        ///     得到最大ID
         /// </summary>
         public int GetMaxId()
         {
@@ -19,7 +19,7 @@ namespace TomorrowSoft.BLL
         }
 
         /// <summary>
-        /// 是否存在该记录
+        ///     是否存在该记录
         /// </summary>
         public bool Exists(int Id)
         {
@@ -27,7 +27,7 @@ namespace TomorrowSoft.BLL
         }
 
         /// <summary>
-        /// 增加一条数据
+        ///     增加一条数据
         /// </summary>
         public bool Add(T model)
         {
@@ -35,7 +35,7 @@ namespace TomorrowSoft.BLL
         }
 
         /// <summary>
-        /// 更新一条数据
+        ///     更新一条数据
         /// </summary>
         public bool Update(T model)
         {
@@ -43,16 +43,15 @@ namespace TomorrowSoft.BLL
         }
 
         /// <summary>
-        /// 删除一条数据
+        ///     删除一条数据
         /// </summary>
         public bool Delete(int Id)
         {
-
             return _repository.Delete(Id);
         }
 
         /// <summary>
-        /// 删除一条数据
+        ///     删除一条数据
         /// </summary>
         public bool DeleteList(string Idlist)
         {
@@ -60,42 +59,43 @@ namespace TomorrowSoft.BLL
         }
 
         /// <summary>
-        /// 得到一个对象实体
+        ///     得到一个对象实体
         /// </summary>
         public T GetModel(int Id)
         {
-
             return _repository.GetModel(Id);
         }
 
         /// <summary>
-        /// 获得数据列表
+        ///     获得数据列表
         /// </summary>
         public DataSet GetList(string strWhere)
         {
             return _repository.GetList(strWhere);
         }
+
         /// <summary>
-        /// 获得数据列表
+        ///     获得数据列表
         /// </summary>
         public List<T> GetModelList(string strWhere)
         {
             DataSet ds = _repository.GetList(strWhere);
             return DataTableToList(ds.Tables[0]);
         }
+
         /// <summary>
-        /// 获得数据列表
+        ///     获得数据列表
         /// </summary>
         public List<T> DataTableToList(DataTable dt)
         {
-            List<T> modelList = new List<T>();
+            var modelList = new List<T>();
             int rowsCount = dt.Rows.Count;
             if (rowsCount > 0)
             {
                 for (int n = 0; n < rowsCount; n++)
                 {
-                    T model = new T();
-                    
+                    var model = new T();
+
                     modelList.Add(model);
                 }
             }
@@ -103,7 +103,7 @@ namespace TomorrowSoft.BLL
         }
 
         /// <summary>
-        /// 获得数据列表
+        ///     获得数据列表
         /// </summary>
         public DataSet GetAllList()
         {
@@ -111,7 +111,7 @@ namespace TomorrowSoft.BLL
         }
 
         /// <summary>
-        /// 分页获取数据列表
+        ///     分页获取数据列表
         /// </summary>
         public int GetRecordCount(string strWhere)
         {
