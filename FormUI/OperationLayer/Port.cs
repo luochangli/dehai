@@ -18,12 +18,14 @@ namespace FormUI.OperationLayer
         private static volatile Port instance;
 
         private static readonly object syncRoot = new Object();
-        public SerialPort SerialPort { get; private set; }
+
         private Port()
         {
             ReceiveEventEnabled = true;
             SerialPort = new SerialPort();
         }
+
+        public SerialPort SerialPort { get; private set; }
 
         public TerminalMonitor Owner { get; set; }
 
@@ -61,8 +63,6 @@ namespace FormUI.OperationLayer
             }
         }
 
-
-       
 
         public bool IsOpen
         {
@@ -156,10 +156,9 @@ namespace FormUI.OperationLayer
 
         private void port_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-           
             lock (this)
             {
-                var port = (SerialPort)sender;
+                var port = (SerialPort) sender;
                 string strCollect = string.Empty;
                 try
                 {
@@ -201,7 +200,6 @@ namespace FormUI.OperationLayer
                         IsReceived = true;
                         //return;
                     }
-
                 }
                 catch (Exception ex)
                 {

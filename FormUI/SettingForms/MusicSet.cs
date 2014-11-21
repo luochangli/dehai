@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using FormUI.OperationLayer;
 
@@ -12,8 +7,9 @@ namespace FormUI.SettingForms
 {
     public partial class MusicSet : Form
     {
-        private IList<ListViewItem> itmes;
-        private OrderDefinition _order;
+        private readonly OrderDefinition _order;
+        private readonly IList<ListViewItem> itmes;
+
         public MusicSet(IList<ListViewItem> itmes)
         {
             InitializeComponent();
@@ -21,6 +17,7 @@ namespace FormUI.SettingForms
             _order = new OrderDefinition();
             lbSelectNum.Text = "选中的终端数有：" + this.itmes.Count + "个";
         }
+
         public MusicSet()
         {
             InitializeComponent();
@@ -34,12 +31,13 @@ namespace FormUI.SettingForms
 
         private void btOk_Click(object sender, EventArgs e)
         {
-            foreach (var item in itmes)
+            foreach (ListViewItem item in itmes)
             {
-                _order.PlayMusic(item.Text, item.ToolTipText, cbPlayStlye.SelectedIndex.ToString(), numericUpDown1.Value.ToString(),
-                     tbPlayTime.Text);
+                _order.PlayMusic(item.Text, item.ToolTipText, cbPlayStlye.SelectedIndex.ToString(),
+                                 numericUpDown1.Value.ToString(),
+                                 tbPlayTime.Text);
             }
-            this.Close();
+            Close();
         }
 
         private void btCancel_Click(object sender, EventArgs e)
@@ -60,7 +58,5 @@ namespace FormUI.SettingForms
                 tbPlayTime.Text = "03";
             }
         }
-
-       
     }
 }

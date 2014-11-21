@@ -86,7 +86,7 @@ namespace FormUI.OperationLayer
         /// <summary>
         ///     短信不保存，直接发送到串口
         /// </summary>
-        private string SMS_ALERT = "AT+CNMI=2,2,0,1,1";//"AT+CNMI=1,2";
+        private string SMS_ALERT = "AT+CNMI=2,2,0,1,1"; //"AT+CNMI=1,2";
 
         /// <summary>
         ///     短信格式：中文

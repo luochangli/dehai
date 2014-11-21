@@ -21,9 +21,7 @@ namespace FormUI.SettingForms
         private void button1_Click(object sender, EventArgs e)
         {
             Settings.Default.Save();
-            this.Close();
+            Close();
         }
-
-       
     }
 }

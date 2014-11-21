@@ -71,7 +71,7 @@ namespace FormUI
 
         public void ButtonVisible()
         {
-            btFloodWarn.Enabled  = !Settings.Default.cbL1;
+            btFloodWarn.Enabled = !Settings.Default.cbL1;
             btSlaggWarn.Enabled = !Settings.Default.cbL2;
             btPowerAlert.Enabled = !Settings.Default.cbL3;
             btTextPlay.Enabled = !Settings.Default.cbL4;
@@ -86,6 +86,7 @@ namespace FormUI
             btSlaggWarn.Text = Settings.Default.alarm2;
             btPowerAlert.Text = Settings.Default.alarm3;
         }
+
         /// <summary>
         ///     ListBox中显示的记录的条数
         /// </summary>
@@ -130,15 +131,14 @@ namespace FormUI
                             _order.TimeSet(e.Filter.Phone, e.Filter.Phone,
                                            DateTime.Now.ToString("yyyyMMddHHmmss").Substring(2));
                             listView1.Items[i].ImageKey = TerminalState.RunningChecked.ToString();
-
                         }
                         if (e.Filter.Context.Contains("本地喊话") || e.Filter.Context.Contains("播放"))
                         {
                             listView1.Items[i].ImageKey = TerminalState.GreenChecked.ToString();
-
                         }
 
-                        if (e.Filter.Context.Contains("已停播") || e.Filter.Context.Contains("OK") || e.Filter.Context.Contains("充电"))
+                        if (e.Filter.Context.Contains("已停播") || e.Filter.Context.Contains("OK") ||
+                            e.Filter.Context.Contains("充电"))
                         {
                             listView1.Items[i].ImageKey = TerminalState.RunningChecked.ToString();
                         }
@@ -176,7 +176,6 @@ namespace FormUI
                 if (e.Filter.Content1 == null) return;
                 new RecMesSave().SaveMes(e.Filter.Content1, e.Filter.Phone, str);
             }
-            
         }
 
         private void TerminalMonitor_Load(object sender, EventArgs e)
@@ -225,7 +224,6 @@ namespace FormUI
             ListBox1Listener += SendMesShow;
             WindowState = FormWindowState.Maximized;
             AutoSend();
-
         }
 
         private void DeleteReadMsg()
@@ -434,20 +432,21 @@ namespace FormUI
             {
                 MessageBox.Show(ex.Message);
             }
-           
         }
+
         public void AutoSend()
         {
             IList<ListViewItem> items = GetSelectedPhone();
             var t1 = new ThreadStart(() =>
-            {
-                foreach (ListViewItem item in items)
                 {
-                   _order.InitTerminal(item.Text, item.ToolTipText);
-                }
-            });
+                    foreach (ListViewItem item in items)
+                    {
+                        _order.InitTerminal(item.Text, item.ToolTipText);
+                    }
+                });
             new Thread(t1).Start();
         }
+
         private void btTestMusic_Click(object sender, EventArgs e)
         {
             IList<ListViewItem> items = GetSelectedPhone();
@@ -488,7 +487,6 @@ namespace FormUI
             ListViewItem item = listView1.FocusedItem;
             try
             {
-                
                 _order.Detection(item.Text, item.ToolTipText);
             }
             catch (Exception ex)
@@ -558,7 +556,6 @@ namespace FormUI
                             }
                         });
                     new Thread(t).Start();
-
                 }
                 catch (Exception ex)
                 {
@@ -591,7 +588,6 @@ namespace FormUI
                             }
                         });
                     new Thread(t).Start();
-
                 }
                 catch (Exception ex)
                 {
@@ -640,11 +636,10 @@ namespace FormUI
             {
                 try
                 {
-                    foreach (var item in items)
+                    foreach (ListViewItem item in items)
                     {
-                        _order.AddManagerPhone(item.Text,item.ToolTipText, white.Phone);  
+                        _order.AddManagerPhone(item.Text, item.ToolTipText, white.Phone);
                     }
-                    
                 }
                 catch (Exception ex)
                 {
@@ -662,11 +657,10 @@ namespace FormUI
             {
                 try
                 {
-                    foreach (var item in items)
+                    foreach (ListViewItem item in items)
                     {
                         _order.Authorization(item.Text, item.ToolTipText, white.Phone);
                     }
-                   
                 }
                 catch (Exception ex)
                 {
@@ -749,7 +743,6 @@ namespace FormUI
                         }
                     });
                 new Thread(t).Start();
-
             }
         }
 
@@ -808,7 +801,7 @@ namespace FormUI
         private void 定时播放ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             IList<ListViewItem> items = GetSelectedPhone();
-            if (items.Count  == 0)
+            if (items.Count == 0)
             {
                 MessageBox.Show("终端号码为空！");
             }
@@ -846,7 +839,6 @@ namespace FormUI
                             }
                         });
                     new Thread(t).Start();
-
                 }
                 catch (Exception ex)
                 {
@@ -903,6 +895,27 @@ namespace FormUI
         {
             ListViewItem item = listView1.FocusedItem;
             new OpenCTerminal(item).Show();
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Show();
+            WindowState = FormWindowState.Maximized;
+            notifyIcon1.Visible = false;
+        }
+
+        private void TerminalMonitor_SizeChanged(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
+            {
+                Hide();
+                notifyIcon1.Visible = true;
+            }
+        }
+
+        private void 功能按钮显示隐藏ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new ButtonVisibleSet(this).ShowDialog();
         }
 
         public class FilterEventArgs : EventArgs
@@ -1002,28 +1015,5 @@ namespace FormUI
         }
 
         #endregion
-
-      
-
-        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            this.Show();
-            this.WindowState = FormWindowState.Maximized;
-            notifyIcon1.Visible = false; 
-        }
-
-        private void TerminalMonitor_SizeChanged(object sender, EventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Minimized)
-            {
-                this.Hide();
-                this.notifyIcon1.Visible = true;
-            } 
-        }
-
-        private void 功能按钮显示隐藏ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            new ButtonVisibleSet(this).ShowDialog();
-        }
     }
 }

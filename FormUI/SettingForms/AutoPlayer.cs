@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using FormUI.OperationLayer;
 using FormUI.Properties;
@@ -16,14 +10,17 @@ namespace FormUI.SettingForms
 {
     public partial class AutoPlayer : Form
     {
-        private string _terminalName = string.Empty;
-        private string _phone = string.Empty;
-       public AutoPlayer()
+        private readonly string _phone = string.Empty;
+        private readonly GroupMemoryPlayService _service = new GroupMemoryPlayService();
+        private readonly string _terminalName = string.Empty;
+
+        public AutoPlayer()
         {
             InitializeComponent();
             groupBox2.Enabled = false;
         }
-        public AutoPlayer(string name,string phone)
+
+        public AutoPlayer(string name, string phone)
         {
             InitializeComponent();
             _terminalName = name;
@@ -31,7 +28,6 @@ namespace FormUI.SettingForms
             txtPlayTimes.KeyPress += Handler.Nuber09;
         }
 
-        private GroupMemoryPlayService _service = new GroupMemoryPlayService();
         private void AutoPlayer_Load(object sender, EventArgs e)
         {
             OrderDefinition.SetMusicNo(cmbMusic);
@@ -41,30 +37,33 @@ namespace FormUI.SettingForms
             cmbStyle.SelectedIndex = 0;
             GetGroups();
         }
+
         private void GetGroups()
         {
             dgvGroup.DataSource = _service.GetGroupList().Tables[0];
         }
+
         private void dgvGroup_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             dgvMenbers.AutoGenerateColumns = false;
             if (dgvGroup.SelectedRows.Count == 0) return;
-            dgvMenbers.DataSource = _service.GetModelList("GroupName = '" + dgvGroup.SelectedRows[0].Cells[0].Value+"'");
+            dgvMenbers.DataSource =
+                _service.GetModelList("GroupName = '" + dgvGroup.SelectedRows[0].Cells[0].Value + "'");
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-           if (AddMenber())
-           {
-               MessageBox.Show("添加成功！");
-               Settings.Default.Save();
-               GetGroups();
-               this.Close();
-           }
-           else
-           {
-               MessageBox.Show("添加失败！");
-           }
+            if (AddMenber())
+            {
+                MessageBox.Show("添加成功！");
+                Settings.Default.Save();
+                GetGroups();
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("添加失败！");
+            }
         }
 
         private bool AddMenber()
@@ -74,18 +73,17 @@ namespace FormUI.SettingForms
             {
                 delayMinute = Convert.ToDouble(txtDelay.Text);
             }
-          return   _service.Add(new GroupMemoryPlay()
+            return _service.Add(new GroupMemoryPlay
                 {
                     GroupName = txtGroupName.Text,
                     TerminalName = _terminalName,
                     TerminalNo = _phone,
                     PlayDelay = delayMinute,
                     PlayTimes = 0,
-                    Music = cmbMusic .Text ,
-                    PlayStyle = cmbStyle.SelectedIndex.ToString() ,
-                    PlayMinute = txtPlayTimes .Text 
+                    Music = cmbMusic.Text,
+                    PlayStyle = cmbStyle.SelectedIndex.ToString(),
+                    PlayMinute = txtPlayTimes.Text
                 });
-
         }
 
         private void btDel_Click(object sender, EventArgs e)
@@ -97,7 +95,7 @@ namespace FormUI.SettingForms
             else
             {
                 if (MessageBox.Show(string.Format("您确定要删除{0}记录?", dgvGroup.SelectedRows.Count), "提示",
-                MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                                    MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
                     for (int i = 0; i < dgvGroup.SelectedRows.Count; i++)
                     {
@@ -113,7 +111,7 @@ namespace FormUI.SettingForms
         {
             AlarmClock.GroupName = dgvGroup.SelectedRows[0].Cells[0].Value.ToString();
             AlarmClock.PlayTime = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
-            this.Close();
+            Close();
             new MessageBoxTimeOut().Show(5000, string.Format("从现在开始倒计时执行延时组播！"), "提示", MessageBoxButtons.OK);
         }
     }
