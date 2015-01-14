@@ -272,6 +272,12 @@ namespace FormUI.OperationLayer
             return "警报";
         }
 
+        public string Alarm(string terminalName, string phone, string minute)
+        {
+            comAT.SendChineseMessage(terminalName, phone, "警报" + minute);
+            return "警报";
+        }
+
         /// <summary>
         ///     检测
         /// </summary>

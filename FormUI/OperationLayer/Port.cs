@@ -85,7 +85,7 @@ namespace FormUI.OperationLayer
         }
 
         /// <summary>
-        ///     挂起线程，等待串口回应
+        ///  挂起线程，等待串口回应
         /// </summary>
         private void Suspend()
         {

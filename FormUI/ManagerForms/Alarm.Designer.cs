@@ -81,6 +81,7 @@
             this.label6.Size = new System.Drawing.Size(77, 12);
             this.label6.TabIndex = 15;
             this.label6.Text = "语音段选择：";
+            this.label6.Visible = false;
             // 
             // cmbMusic
             // 
@@ -91,6 +92,7 @@
             this.cmbMusic.Name = global::FormUI.Properties.Settings.Default.cmbMusicR;
             this.cmbMusic.Size = new System.Drawing.Size(73, 20);
             this.cmbMusic.TabIndex = 23;
+            this.cmbMusic.Visible = false;
             // 
             // Alarm
             // 

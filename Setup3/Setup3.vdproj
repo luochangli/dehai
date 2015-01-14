@@ -15,30 +15,6 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_2309490EAC418403DFB2ADEEC2260F5D"
-        "OwnerKey" = "8:_E771D28808FE50647A2C12A0FB769AF0"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_2309490EAC418403DFB2ADEEC2260F5D"
-        "OwnerKey" = "8:_8BB8C7EEE6CB51DB6AEDE25FC8B16D3C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_2309490EAC418403DFB2ADEEC2260F5D"
-        "OwnerKey" = "8:_2450A2C305274F4CBDCE54EB83219225"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_2450A2C305274F4CBDCE54EB83219225"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_45BD5B5767C043B2B2726FDF991AB0A4"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -53,18 +29,6 @@
         {
         "MsmKey" = "8:_5F0D845E51E84D1894FA00D524F9580E"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_6C377331F2410457BBAFDB4E24299D22"
-        "OwnerKey" = "8:_E771D28808FE50647A2C12A0FB769AF0"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_6C377331F2410457BBAFDB4E24299D22"
-        "OwnerKey" = "8:_2450A2C305274F4CBDCE54EB83219225"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -93,12 +57,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_8BB8C7EEE6CB51DB6AEDE25FC8B16D3C"
-        "OwnerKey" = "8:_2450A2C305274F4CBDCE54EB83219225"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_A0C7888D7BFF4061ACDDCAEF61C553A8"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -123,12 +81,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_BFA76FB1586DFEA146631DB8A1DCF0D4"
-        "OwnerKey" = "8:_2450A2C305274F4CBDCE54EB83219225"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_DB94CBBD181C487B9BC95D683AF595AC"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -137,108 +89,6 @@
         {
         "MsmKey" = "8:_DFD414D741EE401CADE74770F4B040BF"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_E771D28808FE50647A2C12A0FB769AF0"
-        "OwnerKey" = "8:_2450A2C305274F4CBDCE54EB83219225"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_E771D28808FE50647A2C12A0FB769AF0"
-        "OwnerKey" = "8:_8BB8C7EEE6CB51DB6AEDE25FC8B16D3C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_EB7559D22EAEE6111C437DB2B7F877A8"
-        "OwnerKey" = "8:_6C377331F2410457BBAFDB4E24299D22"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_EB7559D22EAEE6111C437DB2B7F877A8"
-        "OwnerKey" = "8:_BFA76FB1586DFEA146631DB8A1DCF0D4"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_EB7559D22EAEE6111C437DB2B7F877A8"
-        "OwnerKey" = "8:_2450A2C305274F4CBDCE54EB83219225"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_EB7559D22EAEE6111C437DB2B7F877A8"
-        "OwnerKey" = "8:_E771D28808FE50647A2C12A0FB769AF0"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_F16F8621C63C229BA07906A17E3AC56F"
-        "OwnerKey" = "8:_E771D28808FE50647A2C12A0FB769AF0"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_F16F8621C63C229BA07906A17E3AC56F"
-        "OwnerKey" = "8:_8BB8C7EEE6CB51DB6AEDE25FC8B16D3C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_F16F8621C63C229BA07906A17E3AC56F"
-        "OwnerKey" = "8:_2450A2C305274F4CBDCE54EB83219225"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_8BB8C7EEE6CB51DB6AEDE25FC8B16D3C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_2450A2C305274F4CBDCE54EB83219225"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_BFA76FB1586DFEA146631DB8A1DCF0D4"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E771D28808FE50647A2C12A0FB769AF0"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_F16F8621C63C229BA07906A17E3AC56F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_2309490EAC418403DFB2ADEEC2260F5D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_6C377331F2410457BBAFDB4E24299D22"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_EB7559D22EAEE6111C437DB2B7F877A8"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -351,37 +201,6 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2309490EAC418403DFB2ADEEC2260F5D"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Infrastructure, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_2309490EAC418403DFB2ADEEC2260F5D"
-                    {
-                    "Name" = "8:Infrastructure.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Infrastructure.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_4BD058AE9A854C2EBD49389338D9D4D7"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_45BD5B5767C043B2B2726FDF991AB0A4"
             {
             "SourcePath" = "8:..\\FormUI\\bin\\Debug\\AutoShutdownHelper\\errorCodes.txt"
@@ -440,37 +259,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6C377331F2410457BBAFDB4E24299D22"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:TomorrowSoft.DBUtility, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_6C377331F2410457BBAFDB4E24299D22"
-                    {
-                    "Name" = "8:TomorrowSoft.DBUtility.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:TomorrowSoft.DBUtility.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_4BD058AE9A854C2EBD49389338D9D4D7"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7796538D54774FF8B8A047DD378A794B"
@@ -553,37 +341,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_8BB8C7EEE6CB51DB6AEDE25FC8B16D3C"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:BLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_8BB8C7EEE6CB51DB6AEDE25FC8B16D3C"
-                    {
-                    "Name" = "8:BLL.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:BLL.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_4BD058AE9A854C2EBD49389338D9D4D7"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A0C7888D7BFF4061ACDDCAEF61C553A8"
             {
             "SourcePath" = "8:..\\FormUI\\bin\\Debug\\x86\\SQLite.Interop.dll"
@@ -664,37 +421,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_BFA76FB1586DFEA146631DB8A1DCF0D4"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:System.Data.SQLite.Linq, Version=1.0.89.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_BFA76FB1586DFEA146631DB8A1DCF0D4"
-                    {
-                    "Name" = "8:System.Data.SQLite.Linq.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:System.Data.SQLite.Linq.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_4BD058AE9A854C2EBD49389338D9D4D7"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DB94CBBD181C487B9BC95D683AF595AC"
             {
             "SourcePath" = "8:..\\FormUI\\bin\\Debug\\x64\\SQLite.Interop.dll"
@@ -733,99 +459,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E771D28808FE50647A2C12A0FB769AF0"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:TomorrowSoft.DAL, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_E771D28808FE50647A2C12A0FB769AF0"
-                    {
-                    "Name" = "8:TomorrowSoft.DAL.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:TomorrowSoft.DAL.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_4BD058AE9A854C2EBD49389338D9D4D7"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EB7559D22EAEE6111C437DB2B7F877A8"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:System.Data.SQLite, Version=1.0.89.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_EB7559D22EAEE6111C437DB2B7F877A8"
-                    {
-                    "Name" = "8:System.Data.SQLite.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:System.Data.SQLite.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_4BD058AE9A854C2EBD49389338D9D4D7"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F16F8621C63C229BA07906A17E3AC56F"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:TomorrowSoft.Model, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_F16F8621C63C229BA07906A17E3AC56F"
-                    {
-                    "Name" = "8:TomorrowSoft.Model.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:TomorrowSoft.Model.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_4BD058AE9A854C2EBD49389338D9D4D7"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
         }
@@ -1082,7 +715,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_2450A2C305274F4CBDCE54EB83219225"
+            "Target" = "8:"
             "Folder" = "8:_26FF0007D791445F8207264582840015"
             "WorkingFolder" = "8:_4BD058AE9A854C2EBD49389338D9D4D7"
             "Icon" = "8:_A843052C01A848CA9B43142E9BBB496C"
@@ -1096,7 +729,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_2450A2C305274F4CBDCE54EB83219225"
+            "Target" = "8:"
             "Folder" = "8:_E84B64C60E104831B7B239CE6E8D4214"
             "WorkingFolder" = "8:_4BD058AE9A854C2EBD49389338D9D4D7"
             "Icon" = "8:_A843052C01A848CA9B43142E9BBB496C"
@@ -1110,7 +743,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_2450A2C305274F4CBDCE54EB83219225"
+            "Target" = "8:"
             "Folder" = "8:_26FF0007D791445F8207264582840015"
             "WorkingFolder" = "8:_4BD058AE9A854C2EBD49389338D9D4D7"
             "Icon" = "8:_A843052C01A848CA9B43142E9BBB496C"
@@ -1515,34 +1148,6 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_2450A2C305274F4CBDCE54EB83219225"
-            {
-            "SourcePath" = "8:..\\FormUI\\obj\\x86\\Debug\\FormUI.exe"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_4BD058AE9A854C2EBD49389338D9D4D7"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{43018355-E754-4B30-8E69-D749984C702B}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
         }
     }
 }

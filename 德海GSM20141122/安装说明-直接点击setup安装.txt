@@ -1,0 +1,5 @@
+安装说明：文件夹中有三个文件“setup”、“德海GSM广播系统”和windows框架文件“Microsoft.NET”（软甲所需的.NET框架）。
+Microsoft.NET是软件运行必备的程序，如果系统中没有它，软件就不能正常运行，一般windows操作系统中“windows update”会
+自动更新Microsoft.NET，也有安全软件会在修复漏洞时更新Microsoft.NET如360卫士，本软件要求的最低Microsoft.NET版本是4.0。
+直接双击setup，它会判断系统中是否有“Microsoft.NET”的框架若有则直接安装目标软件。
+若系统中含有“Microsoft.NET”则直接双击“德海GSM广播系统”。

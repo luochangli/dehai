@@ -15,8 +15,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{4836DE9B-83E5-4AFB-929A-F50B84A9A89F}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup3", "Setup3\Setup3.vdproj", "{83972E96-BB59-40AF-8FAC-EE4FF3AC62AD}"
-EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup2", "Setup2\Setup2.vdproj", "{C1997D25-A005-4C04-9F54-6113510EFEE4}"
 EndProject
 Global
@@ -148,15 +146,6 @@ Global
 		{4836DE9B-83E5-4AFB-929A-F50B84A9A89F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{4836DE9B-83E5-4AFB-929A-F50B84A9A89F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{4836DE9B-83E5-4AFB-929A-F50B84A9A89F}.Release|x86.ActiveCfg = Release|Any CPU
-		{83972E96-BB59-40AF-8FAC-EE4FF3AC62AD}.Debug|Any CPU.ActiveCfg = Debug
-		{83972E96-BB59-40AF-8FAC-EE4FF3AC62AD}.Debug|Mixed Platforms.ActiveCfg = Debug
-		{83972E96-BB59-40AF-8FAC-EE4FF3AC62AD}.Debug|x86.ActiveCfg = Debug
-		{83972E96-BB59-40AF-8FAC-EE4FF3AC62AD}.new|Any CPU.ActiveCfg = Release
-		{83972E96-BB59-40AF-8FAC-EE4FF3AC62AD}.new|Mixed Platforms.ActiveCfg = Release
-		{83972E96-BB59-40AF-8FAC-EE4FF3AC62AD}.new|x86.ActiveCfg = Release
-		{83972E96-BB59-40AF-8FAC-EE4FF3AC62AD}.Release|Any CPU.ActiveCfg = Release
-		{83972E96-BB59-40AF-8FAC-EE4FF3AC62AD}.Release|Mixed Platforms.ActiveCfg = Release
-		{83972E96-BB59-40AF-8FAC-EE4FF3AC62AD}.Release|x86.ActiveCfg = Release
 		{C1997D25-A005-4C04-9F54-6113510EFEE4}.Debug|Any CPU.ActiveCfg = Debug
 		{C1997D25-A005-4C04-9F54-6113510EFEE4}.Debug|Mixed Platforms.ActiveCfg = Debug
 		{C1997D25-A005-4C04-9F54-6113510EFEE4}.Debug|x86.ActiveCfg = Debug

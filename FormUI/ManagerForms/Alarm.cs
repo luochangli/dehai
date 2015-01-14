@@ -35,7 +35,7 @@ namespace FormUI.ManagerForms
                         {
                             foreach (ListViewItem item in Items)
                             {
-                                _order.Alarm(item.Text, item.ToolTipText, music, minute);
+                                _order.Alarm(item.Text, item.ToolTipText, minute);
                             }
                         });
                     new Thread(t).Start();
