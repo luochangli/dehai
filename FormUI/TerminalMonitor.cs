@@ -152,6 +152,12 @@ namespace FormUI
                             new MessageBoxTimeOut().Show(3000, string.Format("{0}", e.Filter.Context), "告警",
                                                          MessageBoxButtons.OK);
                         }
+                        if (e.Filter.Context.Contains("警报"))
+                        {
+                            listView1.Items[i].ImageKey = TerminalState.RedChecked.ToString();
+                            new MessageBoxTimeOut().Show(3000, string.Format("{0}", e.Filter.Context), "警报",
+                                                         MessageBoxButtons.OK);
+                        }
                         /* if (e.Filter.IsQsDown)
                         {
                             listView1.Items[i].ImageKey = TerminalState.Red.ToString();
