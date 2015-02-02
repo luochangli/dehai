@@ -31,7 +31,7 @@ namespace FormUI
         private readonly Port port = Port.Instance;
         private Printer _printer = new Printer();
         private AlarmClock alarmClock;
-
+        private MainWindow CameraShow;
 
         public TerminalMonitor()
         {
@@ -40,6 +40,7 @@ namespace FormUI
             alarmClock = new AlarmClock();
             _order = new OrderDefinition();
             _service = new TerminalService();
+            CameraShow = new MainWindow();
             ButtonVisible();
         }
 
@@ -69,7 +70,9 @@ namespace FormUI
             }
         }
 
-
+        /// <summary>
+        /// 按键隐藏
+        /// </summary>
         public void ButtonVisible()
         {
             btFloodWarn.Enabled = !Settings.Default.cbL1;
@@ -174,6 +177,10 @@ namespace FormUI
                         str = listView1.Items[i].Text;
                         listView1.Items[i].Tag = new object();
                         listView1.Items[i].ForeColor = Color.Green;
+                        if (cbOpenCamera.Checked)
+                        {
+                            CameraShow.Show();
+                        }
                         break;
                     }
                 }
@@ -1030,7 +1037,7 @@ namespace FormUI
 
         private void 监控ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new MainWindow().ShowDialog();
+            CameraShow.Show();
         }
 
         private void iVMSToolStripMenuItem_Click(object sender, EventArgs e)

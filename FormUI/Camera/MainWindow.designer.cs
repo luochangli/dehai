@@ -383,7 +383,7 @@ namespace FormUI.Camera
             // 
             // NameloginOn
             // 
-            this.NameloginOn.Location = new System.Drawing.Point(261, 10);
+            this.NameloginOn.Location = new System.Drawing.Point(420, 10);
             this.NameloginOn.Name = "NameloginOn";
             this.NameloginOn.Size = new System.Drawing.Size(75, 23);
             this.NameloginOn.TabIndex = 31;
@@ -395,7 +395,7 @@ namespace FormUI.Camera
             // 
             this.cmbDomain.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDomain.FormattingEnabled = true;
-            this.cmbDomain.Location = new System.Drawing.Point(123, 12);
+            this.cmbDomain.Location = new System.Drawing.Point(282, 12);
             this.cmbDomain.Name = "cmbDomain";
             this.cmbDomain.Size = new System.Drawing.Size(121, 20);
             this.cmbDomain.TabIndex = 30;

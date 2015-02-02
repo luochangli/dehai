@@ -81,6 +81,7 @@
             this.btAlarm = new System.Windows.Forms.Button();
             this.btOpenCTerminal = new System.Windows.Forms.Button();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.cbOpenCamera = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.contextMenu.SuspendLayout();
             this.SuspendLayout();
@@ -249,7 +250,7 @@
             // 串口ToolStripMenuItem
             // 
             this.串口ToolStripMenuItem.Name = "串口ToolStripMenuItem";
-            this.串口ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.串口ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.串口ToolStripMenuItem.Text = "端口";
             this.串口ToolStripMenuItem.Click += new System.EventHandler(this.串口ToolStripMenuItem_Click);
             // 
@@ -259,7 +260,7 @@
             this.历史查询ToolStripMenuItem,
             this.状态查询ToolStripMenuItem});
             this.历史记录ToolStripMenuItem.Name = "历史记录ToolStripMenuItem";
-            this.历史记录ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.历史记录ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.历史记录ToolStripMenuItem.Text = "历史";
             // 
             // 历史查询ToolStripMenuItem
@@ -279,21 +280,21 @@
             // 白名单ToolStripMenuItem
             // 
             this.白名单ToolStripMenuItem.Name = "白名单ToolStripMenuItem";
-            this.白名单ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.白名单ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.白名单ToolStripMenuItem.Text = "白名单";
             this.白名单ToolStripMenuItem.Click += new System.EventHandler(this.白名单ToolStripMenuItem_Click);
             // 
             // 监控ToolStripMenuItem
             // 
             this.监控ToolStripMenuItem.Name = "监控ToolStripMenuItem";
-            this.监控ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.监控ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.监控ToolStripMenuItem.Text = "监控";
             this.监控ToolStripMenuItem.Click += new System.EventHandler(this.监控ToolStripMenuItem_Click);
             // 
             // iVMSToolStripMenuItem
             // 
             this.iVMSToolStripMenuItem.Name = "iVMSToolStripMenuItem";
-            this.iVMSToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.iVMSToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.iVMSToolStripMenuItem.Text = "IVMS";
             this.iVMSToolStripMenuItem.Click += new System.EventHandler(this.iVMSToolStripMenuItem_Click);
             // 
@@ -558,11 +559,22 @@
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
+            // cbOpenCamera
+            // 
+            this.cbOpenCamera.AutoSize = true;
+            this.cbOpenCamera.Location = new System.Drawing.Point(901, 249);
+            this.cbOpenCamera.Name = "cbOpenCamera";
+            this.cbOpenCamera.Size = new System.Drawing.Size(84, 16);
+            this.cbOpenCamera.TabIndex = 20;
+            this.cbOpenCamera.Text = "启用摄像机";
+            this.cbOpenCamera.UseVisualStyleBackColor = true;
+            // 
             // TerminalMonitor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1136, 572);
+            this.Controls.Add(this.cbOpenCamera);
             this.Controls.Add(this.btAlarm);
             this.Controls.Add(this.btOpenCTerminal);
             this.Controls.Add(this.label1);
@@ -649,5 +661,6 @@
         private System.Windows.Forms.ToolStripMenuItem 功能按钮显示隐藏ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 监控ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem iVMSToolStripMenuItem;
+        private System.Windows.Forms.CheckBox cbOpenCamera;
     }
 }
