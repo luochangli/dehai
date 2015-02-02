@@ -444,7 +444,7 @@ namespace FormUI.OperationLayer
         {
             _port.Send(SMS_ANSWER);
         }
-
+        private static readonly object syncRoot = new Object();
 
         /// <summary>
         ///     发送中文短信
@@ -454,7 +454,7 @@ namespace FormUI.OperationLayer
         /// <param name="context"></param>
         public void SendChineseMessage(string terminal, string phone, string context)
         {
-            lock (this)
+            lock (syncRoot)
             {
                 try
                 {

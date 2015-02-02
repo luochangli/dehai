@@ -48,12 +48,15 @@
             this.历史查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.状态查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.白名单ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.监控ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.iVMSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.终端ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.口令管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.告警ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.定时查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.定时开关机ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.功能按钮显示隐藏ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lbPortState = new System.Windows.Forms.Label();
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -78,7 +81,6 @@
             this.btAlarm = new System.Windows.Forms.Button();
             this.btOpenCTerminal = new System.Windows.Forms.Button();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.功能按钮显示隐藏ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.contextMenu.SuspendLayout();
             this.SuspendLayout();
@@ -237,15 +239,17 @@
             this.管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.串口ToolStripMenuItem,
             this.历史记录ToolStripMenuItem,
-            this.白名单ToolStripMenuItem});
+            this.白名单ToolStripMenuItem,
+            this.监控ToolStripMenuItem,
+            this.iVMSToolStripMenuItem});
             this.管理ToolStripMenuItem.Name = "管理ToolStripMenuItem";
-            this.管理ToolStripMenuItem.Size = new System.Drawing.Size(59, 31);
+            this.管理ToolStripMenuItem.Size = new System.Drawing.Size(64, 31);
             this.管理ToolStripMenuItem.Text = "管理(&M)";
             // 
             // 串口ToolStripMenuItem
             // 
             this.串口ToolStripMenuItem.Name = "串口ToolStripMenuItem";
-            this.串口ToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
+            this.串口ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.串口ToolStripMenuItem.Text = "端口";
             this.串口ToolStripMenuItem.Click += new System.EventHandler(this.串口ToolStripMenuItem_Click);
             // 
@@ -255,29 +259,43 @@
             this.历史查询ToolStripMenuItem,
             this.状态查询ToolStripMenuItem});
             this.历史记录ToolStripMenuItem.Name = "历史记录ToolStripMenuItem";
-            this.历史记录ToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
+            this.历史记录ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.历史记录ToolStripMenuItem.Text = "历史";
             // 
             // 历史查询ToolStripMenuItem
             // 
             this.历史查询ToolStripMenuItem.Name = "历史查询ToolStripMenuItem";
-            this.历史查询ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.历史查询ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.历史查询ToolStripMenuItem.Text = "历史查询";
             this.历史查询ToolStripMenuItem.Click += new System.EventHandler(this.历史查询ToolStripMenuItem_Click);
             // 
             // 状态查询ToolStripMenuItem
             // 
             this.状态查询ToolStripMenuItem.Name = "状态查询ToolStripMenuItem";
-            this.状态查询ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.状态查询ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.状态查询ToolStripMenuItem.Text = "状态查询";
             this.状态查询ToolStripMenuItem.Click += new System.EventHandler(this.状态查询ToolStripMenuItem_Click);
             // 
             // 白名单ToolStripMenuItem
             // 
             this.白名单ToolStripMenuItem.Name = "白名单ToolStripMenuItem";
-            this.白名单ToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
+            this.白名单ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.白名单ToolStripMenuItem.Text = "白名单";
             this.白名单ToolStripMenuItem.Click += new System.EventHandler(this.白名单ToolStripMenuItem_Click);
+            // 
+            // 监控ToolStripMenuItem
+            // 
+            this.监控ToolStripMenuItem.Name = "监控ToolStripMenuItem";
+            this.监控ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.监控ToolStripMenuItem.Text = "监控";
+            this.监控ToolStripMenuItem.Click += new System.EventHandler(this.监控ToolStripMenuItem_Click);
+            // 
+            // iVMSToolStripMenuItem
+            // 
+            this.iVMSToolStripMenuItem.Name = "iVMSToolStripMenuItem";
+            this.iVMSToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.iVMSToolStripMenuItem.Text = "IVMS";
+            this.iVMSToolStripMenuItem.Click += new System.EventHandler(this.iVMSToolStripMenuItem_Click);
             // 
             // 设置ToolStripMenuItem
             // 
@@ -295,42 +313,49 @@
             // 终端ToolStripMenuItem
             // 
             this.终端ToolStripMenuItem.Name = "终端ToolStripMenuItem";
-            this.终端ToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.终端ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.终端ToolStripMenuItem.Text = "终端";
             this.终端ToolStripMenuItem.Click += new System.EventHandler(this.终端ToolStripMenuItem_Click);
             // 
             // 口令管理ToolStripMenuItem
             // 
             this.口令管理ToolStripMenuItem.Name = "口令管理ToolStripMenuItem";
-            this.口令管理ToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.口令管理ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.口令管理ToolStripMenuItem.Text = "用户管理";
             this.口令管理ToolStripMenuItem.Click += new System.EventHandler(this.口令管理ToolStripMenuItem_Click);
             // 
             // 告警ToolStripMenuItem
             // 
             this.告警ToolStripMenuItem.Name = "告警ToolStripMenuItem";
-            this.告警ToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.告警ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.告警ToolStripMenuItem.Text = "告警时间";
             this.告警ToolStripMenuItem.Click += new System.EventHandler(this.告警ToolStripMenuItem_Click);
             // 
             // 定时查询ToolStripMenuItem
             // 
             this.定时查询ToolStripMenuItem.Name = "定时查询ToolStripMenuItem";
-            this.定时查询ToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.定时查询ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.定时查询ToolStripMenuItem.Text = "定时检测";
             this.定时查询ToolStripMenuItem.Click += new System.EventHandler(this.定时查询ToolStripMenuItem_Click);
             // 
             // 定时开关机ToolStripMenuItem
             // 
             this.定时开关机ToolStripMenuItem.Name = "定时开关机ToolStripMenuItem";
-            this.定时开关机ToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.定时开关机ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.定时开关机ToolStripMenuItem.Text = "定时开关机";
             this.定时开关机ToolStripMenuItem.Click += new System.EventHandler(this.定时开关机ToolStripMenuItem_Click);
+            // 
+            // 功能按钮显示隐藏ToolStripMenuItem
+            // 
+            this.功能按钮显示隐藏ToolStripMenuItem.Name = "功能按钮显示隐藏ToolStripMenuItem";
+            this.功能按钮显示隐藏ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.功能按钮显示隐藏ToolStripMenuItem.Text = "功能按钮显示隐藏";
+            this.功能按钮显示隐藏ToolStripMenuItem.Click += new System.EventHandler(this.功能按钮显示隐藏ToolStripMenuItem_Click);
             // 
             // 关于ToolStripMenuItem
             // 
             this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(59, 31);
+            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(60, 31);
             this.关于ToolStripMenuItem.Text = "关于(&A)";
             this.关于ToolStripMenuItem.Click += new System.EventHandler(this.关于ToolStripMenuItem_Click);
             // 
@@ -359,26 +384,26 @@
             this.终端防盗解锁ToolStripMenuItem,
             this.c型终端ToolStripMenuItem});
             this.contextMenu.Name = "contextMenu";
-            this.contextMenu.Size = new System.Drawing.Size(143, 202);
+            this.contextMenu.Size = new System.Drawing.Size(149, 202);
             // 
             // 状态ToolStripMenuItem
             // 
             this.状态ToolStripMenuItem.Name = "状态ToolStripMenuItem";
-            this.状态ToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.状态ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.状态ToolStripMenuItem.Text = "检测";
             this.状态ToolStripMenuItem.Click += new System.EventHandler(this.状态ToolStripMenuItem_Click);
             // 
             // 音量ToolStripMenuItem
             // 
             this.音量ToolStripMenuItem.Name = "音量ToolStripMenuItem";
-            this.音量ToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.音量ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.音量ToolStripMenuItem.Text = "设置音量";
             this.音量ToolStripMenuItem.Click += new System.EventHandler(this.音量ToolStripMenuItem_Click);
             // 
             // 电压ToolStripMenuItem
             // 
             this.电压ToolStripMenuItem.Name = "电压ToolStripMenuItem";
-            this.电压ToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.电压ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.电压ToolStripMenuItem.Text = "设置电压";
             this.电压ToolStripMenuItem.Click += new System.EventHandler(this.电压ToolStripMenuItem_Click);
             // 
@@ -391,76 +416,76 @@
             this.删除号码ToolStripMenuItem,
             this.清空白名单ToolStripMenuItem});
             this.白名单ToolStripMenuItem1.Name = "白名单ToolStripMenuItem1";
-            this.白名单ToolStripMenuItem1.Size = new System.Drawing.Size(142, 22);
+            this.白名单ToolStripMenuItem1.Size = new System.Drawing.Size(148, 22);
             this.白名单ToolStripMenuItem1.Text = "白名单";
             // 
             // 查看ToolStripMenuItem
             // 
             this.查看ToolStripMenuItem.Name = "查看ToolStripMenuItem";
-            this.查看ToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.查看ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.查看ToolStripMenuItem.Text = "查看";
             this.查看ToolStripMenuItem.Click += new System.EventHandler(this.查看ToolStripMenuItem_Click);
             // 
             // 添加管理号码ToolStripMenuItem
             // 
             this.添加管理号码ToolStripMenuItem.Name = "添加管理号码ToolStripMenuItem";
-            this.添加管理号码ToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.添加管理号码ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.添加管理号码ToolStripMenuItem.Text = "添加管理号码";
             this.添加管理号码ToolStripMenuItem.Click += new System.EventHandler(this.添加管理号码ToolStripMenuItem_Click);
             // 
             // 添加授权号码ToolStripMenuItem
             // 
             this.添加授权号码ToolStripMenuItem.Name = "添加授权号码ToolStripMenuItem";
-            this.添加授权号码ToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.添加授权号码ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.添加授权号码ToolStripMenuItem.Text = "添加授权号码";
             this.添加授权号码ToolStripMenuItem.Click += new System.EventHandler(this.添加授权号码ToolStripMenuItem_Click);
             // 
             // 删除号码ToolStripMenuItem
             // 
             this.删除号码ToolStripMenuItem.Name = "删除号码ToolStripMenuItem";
-            this.删除号码ToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.删除号码ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.删除号码ToolStripMenuItem.Text = "删除号码";
             this.删除号码ToolStripMenuItem.Click += new System.EventHandler(this.删除号码ToolStripMenuItem_Click);
             // 
             // 清空白名单ToolStripMenuItem
             // 
             this.清空白名单ToolStripMenuItem.Name = "清空白名单ToolStripMenuItem";
-            this.清空白名单ToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.清空白名单ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.清空白名单ToolStripMenuItem.Text = "清空白名单";
             this.清空白名单ToolStripMenuItem.Click += new System.EventHandler(this.清空白名单ToolStripMenuItem_Click);
             // 
             // 定时播放ToolStripMenuItem
             // 
             this.定时播放ToolStripMenuItem.Name = "定时播放ToolStripMenuItem";
-            this.定时播放ToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.定时播放ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.定时播放ToolStripMenuItem.Text = "定时广播";
             this.定时播放ToolStripMenuItem.Click += new System.EventHandler(this.定时播放ToolStripMenuItem_Click);
             // 
             // 设定延时广播ToolStripMenuItem
             // 
             this.设定延时广播ToolStripMenuItem.Name = "设定延时广播ToolStripMenuItem";
-            this.设定延时广播ToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.设定延时广播ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.设定延时广播ToolStripMenuItem.Text = "设定延时广播";
             this.设定延时广播ToolStripMenuItem.Click += new System.EventHandler(this.设定延时广播ToolStripMenuItem_Click);
             // 
             // 终端防盗加锁ToolStripMenuItem
             // 
             this.终端防盗加锁ToolStripMenuItem.Name = "终端防盗加锁ToolStripMenuItem";
-            this.终端防盗加锁ToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.终端防盗加锁ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.终端防盗加锁ToolStripMenuItem.Text = "终端防盗加锁";
             this.终端防盗加锁ToolStripMenuItem.Click += new System.EventHandler(this.终端防盗加锁ToolStripMenuItem_Click);
             // 
             // 终端防盗解锁ToolStripMenuItem
             // 
             this.终端防盗解锁ToolStripMenuItem.Name = "终端防盗解锁ToolStripMenuItem";
-            this.终端防盗解锁ToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.终端防盗解锁ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.终端防盗解锁ToolStripMenuItem.Text = "终端防盗解锁";
             this.终端防盗解锁ToolStripMenuItem.Click += new System.EventHandler(this.终端防盗解锁ToolStripMenuItem_Click);
             // 
             // c型终端ToolStripMenuItem
             // 
             this.c型终端ToolStripMenuItem.Name = "c型终端ToolStripMenuItem";
-            this.c型终端ToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.c型终端ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.c型终端ToolStripMenuItem.Text = "C型终端";
             this.c型终端ToolStripMenuItem.Click += new System.EventHandler(this.c型终端ToolStripMenuItem_Click);
             // 
@@ -532,13 +557,6 @@
             this.notifyIcon1.Text = "德海GSM广播监测系统";
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
-            // 
-            // 功能按钮显示隐藏ToolStripMenuItem
-            // 
-            this.功能按钮显示隐藏ToolStripMenuItem.Name = "功能按钮显示隐藏ToolStripMenuItem";
-            this.功能按钮显示隐藏ToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.功能按钮显示隐藏ToolStripMenuItem.Text = "功能按钮显示隐藏";
-            this.功能按钮显示隐藏ToolStripMenuItem.Click += new System.EventHandler(this.功能按钮显示隐藏ToolStripMenuItem_Click);
             // 
             // TerminalMonitor
             // 
@@ -629,5 +647,7 @@
         private System.Windows.Forms.ToolStripMenuItem c型终端ToolStripMenuItem;
         public System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.ToolStripMenuItem 功能按钮显示隐藏ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 监控ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem iVMSToolStripMenuItem;
     }
 }

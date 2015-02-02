@@ -30,7 +30,7 @@
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -81,6 +81,25 @@
     <Compile Include="Attributes\LogProperty.cs" />
     <Compile Include="Attributes\LogSink.cs" />
     <Compile Include="Attributes\OperationAttribute.cs" />
+    <Compile Include="Camera\CHCNetSDK.cs" />
+    <Compile Include="Camera\ConvertOfFileExtention.cs" />
+    <Compile Include="Camera\DbHelperSQLite.cs" />
+    <Compile Include="Camera\EncodeDevice.cs" />
+    <Compile Include="Camera\FullScreenHelper.cs" />
+    <Compile Include="Camera\IPChannelConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Camera\IPChannelConfig.designer.cs">
+      <DependentUpon>IPChannelConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Camera\MainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Camera\MainWindow.designer.cs">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Camera\MultiEventHelper.cs" />
+    <Compile Include="Camera\PlayCtrl.cs" />
     <Compile Include="ManagerForms\Alarm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -293,6 +312,12 @@
     <EmbeddedResource Include="AboutBox1.resx">
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Camera\IPChannelConfig.resx">
+      <DependentUpon>IPChannelConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Camera\MainWindow.resx">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ManagerForms\Alarm.resx">
       <DependentUpon>Alarm.cs</DependentUpon>
     </EmbeddedResource>
@@ -399,9 +424,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="SerialPort.db">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    <EmbeddedResource Include="SerialPort.db" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Black.jpg" />
@@ -447,6 +470,7 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using FormUI.Camera;
 
 namespace FormUI
 {
@@ -13,7 +14,6 @@ namespace FormUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
             var loginForm = new LoginForm();
             if (loginForm.ShowDialog() == DialogResult.OK)
             {

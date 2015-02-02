@@ -85,7 +85,7 @@ namespace FormUI.OperationLayer
         }
 
         /// <summary>
-        ///  挂起线程，等待串口回应
+        ///     挂起线程，等待串口回应
         /// </summary>
         private void Suspend()
         {
@@ -152,34 +152,34 @@ namespace FormUI.OperationLayer
         {
             SerialPort.Close();
         }
-
+   
 
         private void port_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            lock (this)
-            {
-                var port = (SerialPort) sender;
-                string strCollect = string.Empty;
-                try
-                {
-                    port.ReceivedBytesThreshold = port.ReadBufferSize;
-                    while (true)
-                    {
-                        string message = port.ReadExisting();
-                        if (string.Equals(message, string.Empty))
-                        {
-                            break;
-                        }
-                        strCollect += message;
-                        Thread.Sleep(30);
-                    }
-                    //                var message = port.ReadExisting();
-                    //                var content = message.Replace("\r", string.Empty)
-                    //                                     .Split(new[] {"\n"}, StringSplitOptions.RemoveEmptyEntries);
-                    string[] content = strCollect.Replace("\r", string.Empty)
-                                                 .Split(new[] {"\n", "ERROR"}, StringSplitOptions.RemoveEmptyEntries);
 
-                    ReadCardMes(content);
+            var port = (SerialPort) sender;
+            string strCollect = string.Empty;
+            try
+            {
+                port.ReceivedBytesThreshold = port.ReadBufferSize;
+                while (true)
+                {
+                    string message = port.ReadExisting();
+                    if (string.Equals(message, string.Empty))
+                    {
+                        break;
+                    }
+                    strCollect += message;
+                    Thread.Sleep(30);
+                }
+                //                var message = port.ReadExisting();
+                //                var content = message.Replace("\r", string.Empty)
+                //                                     .Split(new[] {"\n"}, StringSplitOptions.RemoveEmptyEntries);
+                string[] content = strCollect.Replace("\r", string.Empty)
+                                             .Split(new[] {"\n", "ERROR"}, StringSplitOptions.RemoveEmptyEntries);
+                lock (syncRoot)
+                {
+                      ReadCardMes(content);
 
                     foreach (string t1 in content)
                     {
@@ -195,6 +195,8 @@ namespace FormUI.OperationLayer
                             //Thread.Sleep(260);
                         }
                     }
+                }
+                  
                     if (!ReceiveEventEnabled)
                     {
                         IsReceived = true;
@@ -205,11 +207,11 @@ namespace FormUI.OperationLayer
                 {
                     MessageBox.Show(ex.Message);
                 }
-                finally
+            finally
                 {
                     port.ReceivedBytesThreshold = 1;
                 }
-            }
+            
         }
 
         private void ReadCardMes(string[] content)

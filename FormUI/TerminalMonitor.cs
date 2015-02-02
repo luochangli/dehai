@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 using BLL;
+using FormUI.Camera;
 using FormUI.Filters;
 using FormUI.ManagerForms;
 using FormUI.OperationLayer;
@@ -21,7 +22,7 @@ namespace FormUI
         public delegate void Listener(string phone, string context);
 
         public delegate void MyEvent(object sender, FilterEventArgs e);
-
+        private static readonly object syncRoot = new Object();
         public static bool CallLock = true;
 
         private readonly OrderDefinition _order;
@@ -119,7 +120,7 @@ namespace FormUI
         /// <param name="e"></param>
         private void RefreshListBox(object sender, FilterEventArgs e)
         {
-            lock (this)
+            lock (syncRoot)
             {
                 string str = e.Filter.Phone;
                 for (int i = 0; i < listView1.Items.Count; i++)
@@ -154,7 +155,7 @@ namespace FormUI
                         }
                         if (e.Filter.Context.Contains("警报"))
                         {
-                            listView1.Items[i].ImageKey = TerminalState.RedChecked.ToString();
+                            listView1.Items[i].ImageKey = TerminalState.Green.ToString();
                             new MessageBoxTimeOut().Show(3000, string.Format("{0}", e.Filter.Context), "警报",
                                                          MessageBoxButtons.OK);
                         }
@@ -181,6 +182,7 @@ namespace FormUI
                 listBox1.Items.Add(new Item(e.Filter.Name + "于：" + str, e.Filter.Context, e.Filter.Time));
                 if (e.Filter.Content1 == null) return;
                 new RecMesSave().SaveMes(e.Filter.Content1, e.Filter.Phone, str);
+
             }
         }
 
@@ -230,6 +232,7 @@ namespace FormUI
             ListBox1Listener += SendMesShow;
             WindowState = FormWindowState.Maximized;
             AutoSend();
+            new ConvertOfFileExtention();
         }
 
         private void DeleteReadMsg()
@@ -905,17 +908,20 @@ namespace FormUI
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            Show();
-            WindowState = FormWindowState.Maximized;
-            notifyIcon1.Visible = false;
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                this.ShowInTaskbar = true;  //显示在系统任务栏
+                this.WindowState = FormWindowState.Normal;  //还原窗体
+                notifyIcon1.Visible = false;  //托盘图标隐藏
+            }
         }
 
         private void TerminalMonitor_SizeChanged(object sender, EventArgs e)
         {
-            if (WindowState == FormWindowState.Minimized)
+            if (this.WindowState == FormWindowState.Minimized)  //判断是否最小化
             {
-                Hide();
-                notifyIcon1.Visible = true;
+                this.ShowInTaskbar = false;  //不显示在系统任务栏
+                notifyIcon1.Visible = true;  //托盘图标可见
             }
         }
 
@@ -1021,5 +1027,15 @@ namespace FormUI
         }
 
         #endregion
+
+        private void 监控ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new MainWindow().ShowDialog();
+        }
+
+        private void iVMSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start(@"iVMS-4200Client\iVMS-4200.exe");
+        }
     }
 }
