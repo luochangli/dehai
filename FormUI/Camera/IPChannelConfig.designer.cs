@@ -421,7 +421,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "IPChannelConfig";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "IPChannelConfig";
+            this.Text = "IP通道配置";
             this.Load += new System.EventHandler(this.IPChannelConfig_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

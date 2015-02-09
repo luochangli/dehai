@@ -463,7 +463,7 @@ namespace FormUI.Camera
             this.Controls.Add(this.groupBox3);
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Main Window";
+            this.Text = "监控预览";
             this.Load += new System.EventHandler(this.MainWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.RealPlayWnd)).EndInit();
             this.groupBox2.ResumeLayout(false);

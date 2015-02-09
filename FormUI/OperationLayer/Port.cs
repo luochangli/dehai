@@ -104,7 +104,11 @@ namespace FormUI.OperationLayer
             IsReceived = false;
         }
 
-
+        /// <summary>
+        /// 发送不换行
+        /// </summary>
+        /// <param name="at"></param>
+        /// <returns></returns>
         [Operation]
         public Port SendNoWrap(string at)
         {
@@ -152,8 +156,35 @@ namespace FormUI.OperationLayer
         {
             SerialPort.Close();
         }
-   
 
+        /*/// <summary>
+        /// 读取给定的串行端口的字符串
+        /// </summary>
+        /// <param name="port">一个串口读取</param>
+        /// <param name="secondsTimeOut">超时，以秒读取操作</param>
+        /// <returns></returns>
+       public string ReadFromPort(SerialPort port, int secondsTimeOut)
+        {
+            int timeOut = 0;
+            string dataRead = string.Empty;
+
+            while (timeOut < secondsTimeOut * 10)
+            {
+                if (port.BytesToRead > 0)
+                {
+                    dataRead = port.ReadExisting();
+                    break;
+                }
+                timeOut++;
+                Thread.Sleep(20);
+            }
+            return dataRead;
+        }*/
+        /// <summary>
+        /// 获取串行端口的数据
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void port_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
 
@@ -172,9 +203,6 @@ namespace FormUI.OperationLayer
                     strCollect += message;
                     Thread.Sleep(30);
                 }
-                //                var message = port.ReadExisting();
-                //                var content = message.Replace("\r", string.Empty)
-                //                                     .Split(new[] {"\n"}, StringSplitOptions.RemoveEmptyEntries);
                 string[] content = strCollect.Replace("\r", string.Empty)
                                              .Split(new[] {"\n", "ERROR"}, StringSplitOptions.RemoveEmptyEntries);
                 lock (syncRoot)

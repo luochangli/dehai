@@ -89,6 +89,7 @@ namespace FormUI
             btFloodWarn.Text = Settings.Default.alarm1;
             btSlaggWarn.Text = Settings.Default.alarm2;
             btPowerAlert.Text = Settings.Default.alarm3;
+            cbOpenCamera.Visible = Settings.Default.cbCamera;
         }
 
         /// <summary>
@@ -139,6 +140,10 @@ namespace FormUI
                         if (e.Filter.Context.Contains("本地喊话") || e.Filter.Context.Contains("播放"))
                         {
                             listView1.Items[i].ImageKey = TerminalState.GreenChecked.ToString();
+                            if (cbOpenCamera.Checked)
+                            {
+                                CameraShow.Show();
+                            }
                         }
 
                         if (e.Filter.Context.Contains("已停播") || e.Filter.Context.Contains("OK") ||
@@ -177,10 +182,7 @@ namespace FormUI
                         str = listView1.Items[i].Text;
                         listView1.Items[i].Tag = new object();
                         listView1.Items[i].ForeColor = Color.Green;
-                        if (cbOpenCamera.Checked)
-                        {
-                            CameraShow.Show();
-                        }
+                      
                         break;
                     }
                 }
@@ -222,6 +224,7 @@ namespace FormUI
                 }
                 ChangeState();
                 DeleteReadMsg();
+                new ConvertOfFileExtention();
             }
             catch (Exception ex)
             {
@@ -239,7 +242,7 @@ namespace FormUI
             ListBox1Listener += SendMesShow;
             WindowState = FormWindowState.Maximized;
             AutoSend();
-            new ConvertOfFileExtention();
+           
         }
 
         private void DeleteReadMsg()
@@ -918,7 +921,7 @@ namespace FormUI
             if (this.WindowState == FormWindowState.Minimized)
             {
                 this.ShowInTaskbar = true;  //显示在系统任务栏
-                this.WindowState = FormWindowState.Normal;  //还原窗体
+                this.WindowState = FormWindowState.Maximized;  //还原窗体
                 notifyIcon1.Visible = false;  //托盘图标隐藏
             }
         }

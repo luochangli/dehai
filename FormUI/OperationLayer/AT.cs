@@ -468,20 +468,15 @@ namespace FormUI.OperationLayer
                              .SendNoWrap(content)
                              .Send(END_OF_SMS)
                              .Send(SMS_ALERT);
+
                     }
-
-                    SaveHistoryRecord(phone, "发信",
-                                      DateTime.Now.ToLocalTime(),
-                                      context, terminal);
-                    MyListView.Invoke(new Action<string, string>(MyListView.OnListBox1Listener), terminal,
-                                      context);
+                        SaveHistoryRecord(phone, "发信",
+                                          DateTime.Now.ToLocalTime(),
+                                          context, terminal);
+                        MyListView.Invoke(new Action<string, string>(MyListView.OnListBox1Listener), terminal,
+                                          context);
+                   
                     TerminalMonitor.CallLock = true;
-
-                    //                var firstMutex = new Mutex(false);
-                    //                firstMutex.WaitOne();
-
-
-                    //                firstMutex.Close();
                 }
                 catch (Exception ex)
                 {
