@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading;
+using FormUI.OperationLayer;
 using NVRCsharpDemo;
 
 namespace FormUI.Camera
@@ -39,10 +40,14 @@ namespace FormUI.Camera
         private PlayCtrl.DECCBFUN m_fDisplayFun = null;
         public delegate void MyDebugInfo(string str);
 
+        public static bool IsShow= false;
         private FullScreenHelper fullScreenHelper;
+
+       
         public MainWindow()
         {
             InitializeComponent();
+            new ControlHelpers().FormChange(this);
             m_bInitSDK = CHCNetSDK.NET_DVR_Init();
             if (m_bInitSDK == false)
             {
@@ -62,6 +67,7 @@ namespace FormUI.Camera
                     iChannelNum[i] = -1;
                 }
             }
+            IsShow = true;
         }
 
         public void DebugInfo(string str)
@@ -821,8 +827,8 @@ namespace FormUI.Camera
                 if (devices.Tables[0].Rows.Count > 0)
                 {
                     cmbDomain.DataSource = devices.Tables[0];
-                    cmbDomain.ValueMember = "Name";
-                    cmbDomain.DisplayMember = "Name";
+                    cmbDomain.ValueMember = "LoginAddress";
+                    cmbDomain.DisplayMember = "LoginAddress";
                     cmbDomain.SelectedIndex = 0;
                 }
             }
@@ -844,7 +850,7 @@ namespace FormUI.Camera
                 {
                     string sqlstr =
                         string.Format(
-                            "select * from EncodeDevice where Name ='{0}'",
+                            "select * from EncodeDevice where LoginAddress ='{0}'",
                             cmbDomain.Text);
                     var devices = DbHelperSQLite.ExecDataSet(sqlstr).Tables[0];
                     if (devices.Rows[0]["LoginAddress"].ToString() == string.Empty)

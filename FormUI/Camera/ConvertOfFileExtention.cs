@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.CompilerServices;
+using System.Windows.Forms;
 
 namespace FormUI.Camera
 {
@@ -47,8 +48,16 @@ namespace FormUI.Camera
        
         public ConvertOfFileExtention()
         {
-            GetFex();
-            OnEncodeDevice += GetFex;
+            try
+            {
+                GetFex();
+                OnEncodeDevice += GetFex;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+          
         }
 
         /// <summary>

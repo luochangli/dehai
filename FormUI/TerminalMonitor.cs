@@ -22,16 +22,18 @@ namespace FormUI
         public delegate void Listener(string phone, string context);
 
         public delegate void MyEvent(object sender, FilterEventArgs e);
+
         private static readonly object syncRoot = new Object();
         public static bool CallLock = true;
+        
 
         private readonly OrderDefinition _order;
         private readonly TerminalService _service;
         private readonly AT cmd;
         private readonly Port port = Port.Instance;
+        private ConvertOfFileExtention _convertOfFileExtention;
         private Printer _printer = new Printer();
         private AlarmClock alarmClock;
-        private MainWindow CameraShow;
 
         public TerminalMonitor()
         {
@@ -40,7 +42,7 @@ namespace FormUI
             alarmClock = new AlarmClock();
             _order = new OrderDefinition();
             _service = new TerminalService();
-            CameraShow = new MainWindow();
+           
             ButtonVisible();
         }
 
@@ -54,7 +56,6 @@ namespace FormUI
                 ListBox1Listener(phone, context);
             }
         }
-
 
         private void SendMesShow(string phone, string context)
         {
@@ -71,7 +72,7 @@ namespace FormUI
         }
 
         /// <summary>
-        /// 按键隐藏
+        ///     按键隐藏
         /// </summary>
         public void ButtonVisible()
         {
@@ -142,7 +143,15 @@ namespace FormUI
                             listView1.Items[i].ImageKey = TerminalState.GreenChecked.ToString();
                             if (cbOpenCamera.Checked)
                             {
-                                CameraShow.Show();
+                             
+                                try
+                                {
+                                    CameraShow();
+                                   
+                                }
+                                catch
+                                {
+                                }
                             }
                         }
 
@@ -182,7 +191,7 @@ namespace FormUI
                         str = listView1.Items[i].Text;
                         listView1.Items[i].Tag = new object();
                         listView1.Items[i].ForeColor = Color.Green;
-                      
+
                         break;
                     }
                 }
@@ -191,8 +200,15 @@ namespace FormUI
                 listBox1.Items.Add(new Item(e.Filter.Name + "于：" + str, e.Filter.Context, e.Filter.Time));
                 if (e.Filter.Content1 == null) return;
                 new RecMesSave().SaveMes(e.Filter.Content1, e.Filter.Phone, str);
-
             }
+        }
+
+        private void CameraShow()
+        {
+           if (!MainWindow.IsShow)
+           {
+               new MainWindow().Show();
+           }
         }
 
         private void TerminalMonitor_Load(object sender, EventArgs e)
@@ -224,7 +240,7 @@ namespace FormUI
                 }
                 ChangeState();
                 DeleteReadMsg();
-                new ConvertOfFileExtention();
+               
             }
             catch (Exception ex)
             {
@@ -236,7 +252,7 @@ namespace FormUI
                 功能按钮显示隐藏ToolStripMenuItem.Enabled = true;
             }
             new ControlHelpers().FormChange(this);
-
+            _convertOfFileExtention = new ConvertOfFileExtention();
             LoadTerminals();
             NewPhone += RefreshListBox;
             ListBox1Listener += SendMesShow;
@@ -814,7 +830,14 @@ namespace FormUI
         /// </summary>
         private void Shutdown()
         {
-            Process.Start(@"AutoShutdownHelper\AutoShutdownHelper.exe");
+            try
+            {
+                Process.Start(@"AutoShutdownHelper\AutoShutdownHelper.exe");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void 定时播放ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -918,26 +941,42 @@ namespace FormUI
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (this.WindowState == FormWindowState.Minimized)
+            if (WindowState == FormWindowState.Minimized)
             {
-                this.ShowInTaskbar = true;  //显示在系统任务栏
-                this.WindowState = FormWindowState.Maximized;  //还原窗体
-                notifyIcon1.Visible = false;  //托盘图标隐藏
+                ShowInTaskbar = true; //显示在系统任务栏
+                WindowState = FormWindowState.Maximized; //还原窗体
+                notifyIcon1.Visible = false; //托盘图标隐藏
             }
         }
 
         private void TerminalMonitor_SizeChanged(object sender, EventArgs e)
         {
-            if (this.WindowState == FormWindowState.Minimized)  //判断是否最小化
+            if (WindowState == FormWindowState.Minimized) //判断是否最小化
             {
-                this.ShowInTaskbar = false;  //不显示在系统任务栏
-                notifyIcon1.Visible = true;  //托盘图标可见
+                ShowInTaskbar = false; //不显示在系统任务栏
+                notifyIcon1.Visible = true; //托盘图标可见
             }
         }
 
         private void 功能按钮显示隐藏ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new ButtonVisibleSet(this).ShowDialog();
+        }
+
+        private void 监控ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CameraShow();
+        }
+
+        private void iVMSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Process.Start(@"iVMS-4200Client\iVMS-4200.exe");
+            }
+            catch (Exception es)
+            {
+            }
         }
 
         public class FilterEventArgs : EventArgs
@@ -1037,15 +1076,5 @@ namespace FormUI
         }
 
         #endregion
-
-        private void 监控ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CameraShow.Show();
-        }
-
-        private void iVMSToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Process.Start(@"iVMS-4200Client\iVMS-4200.exe");
-        }
     }
 }

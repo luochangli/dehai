@@ -32,7 +32,9 @@ namespace FormUI.Camera
             {
                 components.Dispose();
             }
+            IsShow = false;
             base.Dispose(disposing);
+     
         }
 
         #region Windows Form Designer generated code
@@ -419,6 +421,7 @@ namespace FormUI.Camera
             this.btn_Exit.TabIndex = 42;
             this.btn_Exit.Text = "退出 Exit";
             this.btn_Exit.UseVisualStyleBackColor = true;
+            this.btn_Exit.Visible = false;
             this.btn_Exit.Click += new System.EventHandler(this.btn_Exit_Click);
             // 
             // TextBoxInfo

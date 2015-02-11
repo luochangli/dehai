@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 using FormUI.OperationLayer.NewSMSCode;
 using TomorrowSoft.BLL;
@@ -468,6 +469,7 @@ namespace FormUI.OperationLayer
                              .SendNoWrap(content)
                              .Send(END_OF_SMS)
                              .Send(SMS_ALERT);
+                        Thread.Sleep(1000);
 
                     }
                         SaveHistoryRecord(phone, "发信",
