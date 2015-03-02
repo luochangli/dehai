@@ -1,0 +1,607 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="FormUI.AboutBox1" Collapsed="true">
+    <Position X="16.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kIACAAgAACAgCBUAAACAAAADAAAAEIAAAAAAAAAAAAA=</HashCode>
+      <FileName>AboutBox1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.LoginForm" Collapsed="true">
+    <Position X="16.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQACAAABAAAgCAAAALAAAQAAADAAAAAgAAEAA=</HashCode>
+      <FileName>LoginForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.Program" Collapsed="true">
+    <Position X="20" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.MainPage" Collapsed="true">
+    <Position X="21.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>PwAAKJQJArAgBEBAAAiACAKCwKCICQoQAEAIoQEEAAA=</HashCode>
+      <FileName>SettingForms\MainPage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.OnDemandForm" Collapsed="true">
+    <Position X="18.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>8CAUAgECACAEATAQAAHAAQASAABYJABChCAAgQAAIDA=</HashCode>
+      <FileName>SettingForms\OnDemandForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.TerminalMonitor" Collapsed="true">
+    <Position X="20" Y="6.5" Width="1.5" />
+    <NestedTypes>
+      <Delegate Name="FormUI.TerminalMonitor.Listener" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>TerminalMonitor.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="FormUI.TerminalMonitor.MyEvent" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>TerminalMonitor.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Class Name="FormUI.TerminalMonitor.FilterEventArgs" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>TerminalMonitor.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="FormUI.TerminalMonitor.Item" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>TerminalMonitor.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Enum Name="FormUI.TerminalMonitor.TerminalState" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>TerminalMonitor.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>BxVFbAMiAahARJWdD5jBmZOW4aEdJGifCJiF6OeFaQA=</HashCode>
+      <FileName>TerminalMonitor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.Attributes.AopAttribute" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Attributes\AopAttribute.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FormUI.Attributes.LogAttribute" Collapsed="true">
+    <Position X="30.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Attributes\LogAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.Attributes.LogProperty" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAQAAAAAAAAAAAAAAQAAAAI=</HashCode>
+      <FileName>Attributes\LogProperty.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FormUI.Attributes.LogSink" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="20" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAIAAAAAAAAAIAAAAAAAQAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Attributes\LogSink.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FormUI.Attributes.OperationAttribute" Collapsed="true">
+    <Position X="21.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Attributes\OperationAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NVRCsharpDemo.CHCNetSDK" Collapsed="true">
+    <Position X="18.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>/////+////////////////////////////////////8=</HashCode>
+      <FileName>Camera\CHCNetSDK.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.Camera.ConvertOfFileExtention" Collapsed="true">
+    <Position X="25.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAQAAAAAAAIIAAAQAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Camera\ConvertOfFileExtention.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.Camera.DbHelperSQLite" Collapsed="true">
+    <Position X="30.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>Camera\DbHelperSQLite.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.Camera.EncodeDevice" Collapsed="true">
+    <Position X="18.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAgAAAAAAAAASAAQAAIAAAEQAAAAAAAAA=</HashCode>
+      <FileName>Camera\EncodeDevice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.Camera.FullScreenHelper" Collapsed="true">
+    <Position X="25.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQACAAAAAAAAYAAAAAAQAAAAAAAAAQAEAACgAggAA=</HashCode>
+      <FileName>Camera\FullScreenHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.Camera.IPChannelConfig" Collapsed="true">
+    <Position X="28.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>/yACAgAAECAAAJAAAAGAgAACACQAgQCCACAQkIKAIjE=</HashCode>
+      <FileName>Camera\IPChannelConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.Camera.MainWindow" Collapsed="true">
+    <Position X="23.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>8yACAACARCAQCRACAiCDsIBLEDBDjKLAIbFyAdPFoCA=</HashCode>
+      <FileName>Camera\MainWindow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.Camera.MultiEventHelper" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="27" Y="3.5" Width="1.5" />
+    <NestedTypes>
+      <Delegate Name="FormUI.Camera.MultiEventHelper.ListeningEvent1" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Camera\MultiEventHelper.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACACAQAAAAAAAAAAAAAAAAQAAAAAAAAAAAg=</HashCode>
+      <FileName>Camera\MultiEventHelper.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FormUI.Camera.PlayCtrl" Collapsed="true">
+    <Position X="27" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>JfE1508atdACaCcQD93F8TMFjBq2d6D7bHyiLp7v6sU=</HashCode>
+      <FileName>Camera\PlayCtrl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.Filters.CallInFilter" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAQAAAAQAAIAAAAAIAAAAQI=</HashCode>
+      <FileName>Filters\CallInFilter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.Filters.ConditionFilter" Collapsed="true">
+    <Position X="20" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAIAAAAAAAAAAAAAAAAAAIAAAQAAAAAAAgEAAAAA=</HashCode>
+      <FileName>Filters\ConditionFilter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.Filters.ConnectFilter" Collapsed="true">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAQAAAAEAAAAAAAAIAAAAQI=</HashCode>
+      <FileName>Filters\ConnectFilter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.Filters.ErrorFilter" Collapsed="true">
+    <Position X="9.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAQAAAAEAAAAAAAAIAAAAQI=</HashCode>
+      <FileName>Filters\ErrorFilter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.Filters.Filter" Collapsed="true">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAgAABAAAAAAQAAQABACAAAAgAAAAIAAAAQI=</HashCode>
+      <FileName>Filters\Filter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.Filters.FilterProcessor" Collapsed="true">
+    <Position X="11.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Filters\FilterProcessor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.Filters.HangUpFilter" Collapsed="true">
+    <Position X="14" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAQAAAAEAAAAAAAAIAAAAQI=</HashCode>
+      <FileName>Filters\HangUpFilter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.Filters.MessageFilter" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADEAAAAgAAAAAAAAAQAAQAAAAAAAAoAAAAIAAAAQI=</HashCode>
+      <FileName>Filters\MessageFilter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.Filters.MessageReplyFilter" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAQAAAAEAAAAAAAAIAAAAQI=</HashCode>
+      <FileName>Filters\MessageReplyFilter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.ManagerForms.Alarm" Collapsed="true">
+    <Position X="18.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACACAACRAAAACAAAACAAAAAACAAAAAAAAAJAA=</HashCode>
+      <FileName>ManagerForms\Alarm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.ManagerForms.ConditionForm" Collapsed="true">
+    <Position X="21.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAIAIgiAIBBMAIAXFMAASAAi7ZgAAABgQAQABIAI=</HashCode>
+      <FileName>ManagerForms\ConditionForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.ManagerForms.HistoryForm" Collapsed="true">
+    <Position X="27" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAIAAgiAIBBMAIAHEMAAWAAg6BwAAABgAAQABABI=</HashCode>
+      <FileName>ManagerForms\HistoryForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.ManagerForms.OpenCTerminal" Collapsed="true">
+    <Position X="20" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAACACAABBAAAICAAABCAAAAAACAEAAAAAAABAA=</HashCode>
+      <FileName>ManagerForms\OpenCTerminal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.ManagerForms.PortForm" Collapsed="true">
+    <Position X="16.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAEQEAAASAgBB4AAACwAQACAgACAAAAACAABQIgAEA=</HashCode>
+      <FileName>ManagerForms\PortForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.ManagerForms.WhiteForm" Collapsed="true">
+    <Position X="30.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAABAAAACAAAACAAAIAAAAEEAAIAAAAAA=</HashCode>
+      <FileName>ManagerForms\WhiteForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.ManagerForms.WhiteListAddForm" Collapsed="true">
+    <Position X="16.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAABAATAAABAQAAiAAAACAAAAAEAAIAAAAAAAEQA=</HashCode>
+      <FileName>ManagerForms\WhiteListAddForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.ManagerForms.WhiteListForm" Collapsed="true">
+    <Position X="18.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgQBIBAgGAIBAMQIEGEcICSEAg4AAhoAAgQAAABAAA=</HashCode>
+      <FileName>ManagerForms\WhiteListForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.OperationLayer.AlarmClock" Collapsed="true">
+    <Position X="20" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAIAABCAQACAAAQAgEAAAACEAAAAAAAEAAAAIIAAAE=</HashCode>
+      <FileName>OperationLayer\AlarmClock.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.OperationLayer.AT" Collapsed="true">
+    <Position X="23.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>hCAoRCXABAoAAAgwB0AIQwIDIIQiAoCHSaDAiAxAAgA=</HashCode>
+      <FileName>OperationLayer\AT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.OperationLayer.ControlHelpers" Collapsed="true">
+    <Position X="23.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAIAIAAAACAAACAAYAA=</HashCode>
+      <FileName>OperationLayer\ControlHelpers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.OperationLayer.DataGridViewPrinter" Collapsed="true">
+    <Position X="27" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AHiABBEIgQAAgIgIAKECBBAiBCBBAAAACAgAMAAEAAA=</HashCode>
+      <FileName>OperationLayer\DataGridViewPrinter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.OperationLayer.DosCommand" Collapsed="true">
+    <Position X="16.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OperationLayer\DosCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.OperationLayer.EventListenter" Collapsed="true">
+    <Position X="20" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OperationLayer\EventListenter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.OperationLayer.FileOperation" Collapsed="true">
+    <Position X="23.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAABAAEAAAAAAA=</HashCode>
+      <FileName>OperationLayer\FileOperation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.OperationLayer.MessageBoxTimeOut" Collapsed="true">
+    <Position X="25.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAgIAAEBAAAAAAAEAAAAEgAAAAAAAAhAAAAA=</HashCode>
+      <FileName>OperationLayer\MessageBoxTimeOut.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.OperationLayer.OrderDefinition" Collapsed="true">
+    <Position X="23.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gIAQCAAGAAAJEgAAIAiAACkEwACAAwQoEgBsYCAAAAA=</HashCode>
+      <FileName>OperationLayer\OrderDefinition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.OperationLayer.Port" Collapsed="true">
+    <Position X="30.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAgACBAAEIJAAYAkAAAAQEDgBAASGAQAAAAACAAgA=</HashCode>
+      <FileName>OperationLayer\Port.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.OperationLayer.Printer" Collapsed="true">
+    <Position X="18.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAQgQAgEAAAEIAAAIAACAAgAABAgAACAAJEAgA=</HashCode>
+      <FileName>OperationLayer\Printer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.OperationLayer.RecMesSave" Collapsed="true">
+    <Position X="21.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OperationLayer\RecMesSave.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.OperationLayer.SerialPortUtil" Collapsed="true">
+    <Position X="25.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IIAAgCAAACIkISAAgABAAggABAgqCAIACEAEAAGUIJA=</HashCode>
+      <FileName>OperationLayer\SerialPortUtil.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.OperationLayer.DataReceivedEventArgs" Collapsed="true">
+    <Position X="28.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>OperationLayer\SerialPortUtil.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.OperationLayer.WakeUp" Collapsed="true">
+    <Position X="27" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAEAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OperationLayer\WakeUp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.OperationLayer.NewSMSCode.Extensions" Collapsed="true">
+    <Position X="21.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAIAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OperationLayer\NewSMSCode\Extensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.OperationLayer.NewSMSCode.SMS" Collapsed="true">
+    <Position X="28.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>DEEAQADgECAABBBAAAIAQAgAgAaAYYBkMABFAAAAKFA=</HashCode>
+      <FileName>OperationLayer\NewSMSCode\GSMALPATH.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.Properties.Resources" Collapsed="true">
+    <Position X="23.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAEAAAAAAgCgQAABEBAAAQADABAACAAAABAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.Properties.Settings" Collapsed="true">
+    <Position X="27" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAQAAAA4YUUAYAAAEAAIigAAgAJIGASCUQCAAAUAAk=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.SettingForms.AutoPlayer" Collapsed="true">
+    <Position X="25.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UAAAEAAAACCQCVAQAACAAgACAQS4ZggEAGQAAIAgABA=</HashCode>
+      <FileName>SettingForms\AutoPlayer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.SettingForms.AutoStartUpOrEsc" Collapsed="true">
+    <Position X="27" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAQEQBBBACgACRASADCAIAGSQAy4ZwCACCQAJAAABAI=</HashCode>
+      <FileName>SettingForms\AutoStartUpOrEsc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.SettingForms.BattryParatemerSetting" Collapsed="true">
+    <Position X="28.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAQAAHIAABAAEACBAAACAAAAAAAAABAAAACBAAA=</HashCode>
+      <FileName>SettingForms\BattryParatemerSetting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.SettingForms.ButtonVisibleSet" Collapsed="true">
+    <Position X="30.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ASIIAAAA4CUAAhAAAACAAARCAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>SettingForms\ButtonVisibleSet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.SettingForms.CallForm" Collapsed="true">
+    <Position X="16.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAACAQAAABgACQAICCAgQ3gAgggAAAZAAAAAA=</HashCode>
+      <FileName>SettingForms\CallForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.SettingForms.MusicForm" Collapsed="true">
+    <Position X="28.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAEAACAAARAAAADAAAASAAAAAAAABAAAgAgAARA=</HashCode>
+      <FileName>SettingForms\MusicForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.SettingForms.MusicSet" Collapsed="true">
+    <Position X="30.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgACmCAAABAABACIAAACEAAAAACAgAAAAAAABAA=</HashCode>
+      <FileName>SettingForms\MusicSet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.SettingForms.MusicTimeSetting">
+    <Position X="14.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAABAQAACAAAACAAAIAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>SettingForms\MusicTimeSetting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.SettingForms.PhotovoltaicAlarm" Collapsed="true">
+    <Position X="25.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BBAAAAAAACAAABAQAACACAACAAACAACAQAAAAAAABAA=</HashCode>
+      <FileName>SettingForms\PhotovoltaicAlarm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.SettingForms.PopupLayer" Collapsed="true">
+    <Position X="28.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYQABCBBCBAIAAABACAABACABAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SettingForms\PopupLayer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.SettingForms.SpeakForm" Collapsed="true">
+    <Position X="30.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQWA4AAhCAARBMQYADEMQESAAAQIQBCBCAEQQABIAA=</HashCode>
+      <FileName>SettingForms\SpeakForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.SettingForms.TerminalAdd" Collapsed="true">
+    <Position X="16.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACBAABBQIACAACACAAQAAABgIACAAAIAEQQ=</HashCode>
+      <FileName>SettingForms\TerminalAdd.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.SettingForms.TerminalForm" Collapsed="true">
+    <Position X="18.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>9gB2AoBCpCAEBJcAoQCEKEKSAAgoCCoOAAQAIMABCAI=</HashCode>
+      <FileName>SettingForms\TerminalForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.SettingForms.UserFrm" Collapsed="true">
+    <Position X="21.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIABAEiAIAJAQAAHAAQCTACwAAAAAACAAAgAQAAA=</HashCode>
+      <FileName>SettingForms\UserFrm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.SettingForms.VoiceText" Collapsed="true">
+    <Position X="23.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACACAADBAAAACAAAACAAAAAACAATAAAAAABAA=</HashCode>
+      <FileName>SettingForms\VoiceText.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.SettingForms.VolumeSetting" Collapsed="true">
+    <Position X="25.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAACAAABAAAACAAAACEAAAAAAAAAIAAAAACAA=</HashCode>
+      <FileName>SettingForms\VolumeSetting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FormUI.SettingForms.WakeUpandShutDown" Collapsed="true">
+    <Position X="28.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>cCQEAAABACgAABFAAACAAIBCAAAAIEAAEAAAAQAQAAE=</HashCode>
+      <FileName>SettingForms\WakeUpandShutDown.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="FormUI.OperationLayer.PlayStyle" Collapsed="true">
+    <Position X="18.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAgAAAAIAAAAAA=</HashCode>
+      <FileName>OperationLayer\OrderDefinition.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="FormUI.OperationLayer.MusicNo" Collapsed="true">
+    <Position X="16.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OperationLayer\OrderDefinition.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="FormUI.OperationLayer.Voice" Collapsed="true">
+    <Position X="23.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OperationLayer\OrderDefinition.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="FormUI.OperationLayer.SerialPortDatabits" Collapsed="true">
+    <Position X="21.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAIAAAAAAAAAAABAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>OperationLayer\SerialPortUtil.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="FormUI.OperationLayer.SerialPortBaudRates" Collapsed="true">
+    <Position X="20" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AARAAAAACQgAAABgEAAAgAAABAkACIAAAAIAACAAABA=</HashCode>
+      <FileName>OperationLayer\SerialPortUtil.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Delegate Name="FormUI.OperationLayer.AsyncSend" Collapsed="true">
+    <Position X="16.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAACAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OperationLayer\AT.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="FormUI.OperationLayer.DataReceivedEventHandler" Collapsed="true">
+    <Position X="20" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OperationLayer\SerialPortUtil.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="FormUI.OperationLayer.DataReceivedEventGet" Collapsed="true">
+    <Position X="18.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OperationLayer\SerialPortUtil.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="微软雅黑" Size="9" />
+</ClassDiagram>

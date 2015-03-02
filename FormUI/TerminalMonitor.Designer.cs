@@ -250,7 +250,7 @@
             // 串口ToolStripMenuItem
             // 
             this.串口ToolStripMenuItem.Name = "串口ToolStripMenuItem";
-            this.串口ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.串口ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.串口ToolStripMenuItem.Text = "端口";
             this.串口ToolStripMenuItem.Click += new System.EventHandler(this.串口ToolStripMenuItem_Click);
             // 
@@ -260,42 +260,43 @@
             this.历史查询ToolStripMenuItem,
             this.状态查询ToolStripMenuItem});
             this.历史记录ToolStripMenuItem.Name = "历史记录ToolStripMenuItem";
-            this.历史记录ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.历史记录ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.历史记录ToolStripMenuItem.Text = "历史";
             // 
             // 历史查询ToolStripMenuItem
             // 
             this.历史查询ToolStripMenuItem.Name = "历史查询ToolStripMenuItem";
-            this.历史查询ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.历史查询ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.历史查询ToolStripMenuItem.Text = "历史查询";
             this.历史查询ToolStripMenuItem.Click += new System.EventHandler(this.历史查询ToolStripMenuItem_Click);
             // 
             // 状态查询ToolStripMenuItem
             // 
             this.状态查询ToolStripMenuItem.Name = "状态查询ToolStripMenuItem";
-            this.状态查询ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.状态查询ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.状态查询ToolStripMenuItem.Text = "状态查询";
             this.状态查询ToolStripMenuItem.Click += new System.EventHandler(this.状态查询ToolStripMenuItem_Click);
             // 
             // 白名单ToolStripMenuItem
             // 
             this.白名单ToolStripMenuItem.Name = "白名单ToolStripMenuItem";
-            this.白名单ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.白名单ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.白名单ToolStripMenuItem.Text = "白名单";
             this.白名单ToolStripMenuItem.Click += new System.EventHandler(this.白名单ToolStripMenuItem_Click);
             // 
             // 监控ToolStripMenuItem
             // 
             this.监控ToolStripMenuItem.Name = "监控ToolStripMenuItem";
-            this.监控ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.监控ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.监控ToolStripMenuItem.Text = "监控";
+            this.监控ToolStripMenuItem.Visible = false;
             this.监控ToolStripMenuItem.Click += new System.EventHandler(this.监控ToolStripMenuItem_Click);
             // 
             // iVMSToolStripMenuItem
             // 
             this.iVMSToolStripMenuItem.Name = "iVMSToolStripMenuItem";
-            this.iVMSToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
-            this.iVMSToolStripMenuItem.Text = "IVMS";
+            this.iVMSToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.iVMSToolStripMenuItem.Text = "萤石云";
             this.iVMSToolStripMenuItem.Click += new System.EventHandler(this.iVMSToolStripMenuItem_Click);
             // 
             // 设置ToolStripMenuItem

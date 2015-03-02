@@ -31,7 +31,6 @@ namespace FormUI
         private readonly TerminalService _service;
         private readonly AT cmd;
         private readonly Port port = Port.Instance;
-        private ConvertOfFileExtention _convertOfFileExtention;
         private Printer _printer = new Printer();
         private AlarmClock alarmClock;
 
@@ -146,8 +145,7 @@ namespace FormUI
                              
                                 try
                                 {
-                                    CameraShow();
-                                   
+                                    OpenEzviz();
                                 }
                                 catch
                                 {
@@ -252,7 +250,6 @@ namespace FormUI
                 功能按钮显示隐藏ToolStripMenuItem.Enabled = true;
             }
             new ControlHelpers().FormChange(this);
-            _convertOfFileExtention = new ConvertOfFileExtention();
             LoadTerminals();
             NewPhone += RefreshListBox;
             ListBox1Listener += SendMesShow;
@@ -970,9 +967,26 @@ namespace FormUI
 
         private void iVMSToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            OpenEzviz();
+        }
+        /// <summary>
+        /// 此函数用于判断某一外部进程是否打开
+        /// </summary>
+        /// <param name="processName">参数为进程名</param>
+        /// <returns>如果打开了，就返回true，没打开，就返回false</returns>
+        private bool IsProcessStarted(string processName)
+        {
+            Process[] temp = Process.GetProcessesByName(processName);
+            if (temp.Length > 0) return true;
+            else
+                return false;
+        }
+        private void OpenEzviz()
+        {
             try
             {
-                Process.Start(@"iVMS-4200Client\iVMS-4200.exe");
+                if (!IsProcessStarted("EzvizStudio"))
+                Process.Start(@"EzvizStudio\EzvizStudio.exe");
             }
             catch (Exception es)
             {
